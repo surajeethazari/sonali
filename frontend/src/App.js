@@ -2,6 +2,7 @@ import * as React from 'react';
 import { red, green, yellow } from '@mui/material/colors';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import { useEffect, useState } from "react";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import SignUp from "./pages/Signup";
@@ -40,13 +41,18 @@ function Copyright(props) {
 }
 
 function App() {
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    fetch("https://mernapp-bcy4.onrender.com/")
+      .then((res) => res.json())
+      .then((data) => setMessage(data.message));
+  },[]);
+
   return (
-    <ThemeProvider theme={defaultTheme}>
-      {/* <PrimarySearchAppBar/> */}
-      <SignUp/>
-      {/* <SignIn/> */}
-      <Copyright sx={{ mt: 5 }} />
-    </ThemeProvider>
+    <div className="App">
+      <h1>{message}</h1>
+    </div>
   );
 }
 
