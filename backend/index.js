@@ -11,6 +11,10 @@ const corsOptions = {
 app.use(express.json());
 app.use(cors(corsOptions));
 
+
+let userRoter = require("./routes/client");
+app.use("/client", userRoter);
+
 // connect MongoDB
 mongoose.connect(process.env.MONGODB_URI).then(() => {
     const PORT = process.env.PORT || 8000
@@ -21,7 +25,4 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.log(err);
 });
 
-// route
-app.get("/", (req, res) => {
-    res.status(201).json({message: "Connected to Backend!"});
-});
+

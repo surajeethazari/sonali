@@ -41,17 +41,19 @@ function Copyright(props) {
 }
 
 function App() {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState([]);
 
   useEffect(() => {
-    fetch("https://mernapp-bcy4.onrender.com/")
+    fetch("https://mernapp-bcy4.onrender.com/client")
       .then((res) => res.json())
-      .then((data) => setMessage(data.message));
+      .then((data) => setMessage(data));
   },[]);
 
   return (
     <div className="App">
-      <h1>{message}</h1>
+      <ul>
+        {message.map((item) => <li key={item._id}>{item.name} </li>)}
+      </ul>
     </div>
   );
 }
