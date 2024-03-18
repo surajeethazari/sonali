@@ -9,10 +9,9 @@ let clientSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    active: {
-        type: Boolean,
-        required: true,
-        default: false
+    password: {
+        type: String,
+        required: true
     }
 });
 

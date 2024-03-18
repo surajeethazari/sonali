@@ -28,7 +28,7 @@ router.post("/", async(req, res) => {
     let client_data = new Client({
         name: req.body.name,
         email: req.body.email,
-        active: req.body.active
+        password: req.body.password
     })
     try {
         let new_client = await client_data.save();
