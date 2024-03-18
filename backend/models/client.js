@@ -3,7 +3,7 @@ let mongoose = require("mongoose");
 let clientSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: false
     },
     email: {
         type: String,
