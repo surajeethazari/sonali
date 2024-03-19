@@ -1,17 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const cors = require("cors");
 const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+const io = require('socket.io')(server, {
+    origin: true
+});
 require("dotenv").config();
-
-// middleware
-const corsOptions = {
-    origin: true // frontend URI (ReactJS)
-}
-app.use(express.json());
-app.use(cors(corsOptions));
 
 
 let userRoter = require("./routes/client");
