@@ -33,9 +33,5 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.log(err);
 });
 
-server.listen(PORT, () => {
-    console.log(`App is Listening on PORT ${PORT}`);
-})
-
 
 
