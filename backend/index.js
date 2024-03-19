@@ -1,12 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
+const cors = require("cors");
 const server = require('http').createServer(app);
 const io = require('socket.io')(server, {
-    origin: true
-});
+    cors: {
+      origin: '*',
+    }
+  });
 require("dotenv").config();
-
 
 let userRoter = require("./routes/client");
 app.use("/client", userRoter);
@@ -26,6 +28,10 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 }).catch(err => {
     console.log(err);
 });
+
+app.get("/", (req, res) => {
+    res.send({msg: "welcome"})
+})
 
 
 
