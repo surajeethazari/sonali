@@ -8,7 +8,10 @@
     "start-server": "cd backend && node index.js",
     "install-frontend": "cd frontend && npm install",
     "build-frontend": "cd frontend && npm run build",
-    "start-frontend": "cd frontend && npm run start"
+    "start-frontend": "cd frontend && npm run start",
+    "install-admin": "cd admin && npm install",
+    "build-admin": "cd admin && npm run build",
+    "start-admin": "cd admin && npm run start"
   },
   "keywords": [],
   "author": "",
