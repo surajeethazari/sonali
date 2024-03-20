@@ -1,45 +1,64 @@
 import * as React from 'react';
-import { red, green, yellow } from '@mui/material/colors';
+import { colors } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import { useEffect, useState } from "react";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 
-
+import Home from './pages/Home';
 import SignUp from "./pages/Signup";
 import SignIn from './pages/Signin';
-import PrimarySearchAppBar from './components/Appbar';
+import ForgotPassword from './pages/ForgotPassword';
+import DefaultAppBar from './components/Appbar';
+import ErrorPage from './pages/ErrorPage';
+import BreadCrumbs from './components/BreadCrumbs';
+import Footer from './components/Footer';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home/>,
+    errorElement: <ErrorPage/>
+  },
+  {
+    path: "/signin",
+    element: <SignIn/>,
+    errorElement: <ErrorPage/>
+  },
+  {
+    path: "/signup",
+    element: <SignUp/>,
+    errorElement: <ErrorPage/>
+  },
+  {
+    path: "/resetPassword",
+    element: <ForgotPassword/>,
+    errorElement: <ErrorPage/>
+  },
+]);
+
 
 const defaultTheme = createTheme({
   palette: {
+      appmain: {
+        main: '#fff'
+      },
       primary: {
-          main: red[300],
-          hover: red[600],
+          main: colors.grey[800]
       },
       secondary: {
-          main: green[300],
-          hover: green[600],
+          main: colors.teal[600]
       },
       tertiary: {
-          main: yellow[300],
-          hover: yellow[600],
+          main: colors.yellow[300]
       },
       mode: "light"
   }
 });
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Sonali Fashion
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 function App() {
   const [message, setMessage] = useState([]);
@@ -50,11 +69,12 @@ function App() {
   },[]);
 
   return (
-    <div className="App">
-      <ul>
-        {message.map((item) => <li key={item._id}>{item.name} </li>)}
-      </ul>
-    </div>
+    <ThemeProvider theme={defaultTheme}>
+      <DefaultAppBar/>
+      <BreadCrumbs/>
+      <RouterProvider router={router}/>
+      <Footer props={null}/>
+    </ThemeProvider>
   );
 }
 
