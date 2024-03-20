@@ -5,10 +5,7 @@ const cors = require("cors");
 const server = require('http').createServer(app);
 const io = require('socket.io')(server, {
     cors: {
-        origin: '*',
-        methods: ['GET', 'POST', 'PATCH', 'DELETE'],
-        allowedHeaders: ['my-custom-header'],
-        credentials: true
+      origin: '*'
     }
 });
 require("dotenv").config();
@@ -16,13 +13,6 @@ require("dotenv").config();
 
 let userRoter = require("./routes/client");
 app.use("/client", userRoter);
-app.use(cors({
-        origin: '*',
-        methods: ['GET', 'POST', 'PATCH', 'DELETE'],
-        allowedHeaders: ['my-custom-header'],
-        credentials: true
-    }
-));
 
 io.on('connection', (socket) => {
     console.log('Client connected');
