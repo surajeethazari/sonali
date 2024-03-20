@@ -38,7 +38,7 @@ export default function ForgotPassword() {
             boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
           }}
         >
-          <Typography variant="h4" color={'primary'}>
+          <Typography variant="h5" color={'primary'}>
             Password Reset
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>

@@ -33,6 +33,7 @@ export default function SignIn() {
           height={400}
           width={500}
           my={2}
+          mb={10}
           mx={-10}
           display="flex"
           alignItems="center"
@@ -44,7 +45,7 @@ export default function SignIn() {
             boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
           }}
         >
-          <Typography variant="h4" color={'primary'}>
+          <Typography variant="h5" color={'primary'}>
             Sign in
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
