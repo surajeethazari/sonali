@@ -5,6 +5,7 @@ import Link from '@mui/material/Link';
 import { useEffect, useState } from "react";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+
 import SignUp from "./pages/Signup";
 import SignIn from './pages/Signin';
 import PrimarySearchAppBar from './components/Appbar';
@@ -42,9 +43,8 @@ function Copyright(props) {
 
 function App() {
   const [message, setMessage] = useState([]);
-
   useEffect(() => {
-    fetch("https://mernapp-bcy4.onrender.com/client")
+    fetch(process.env.REACT_APP_BE_URI + "/client")
       .then((res) => res.json())
       .then((data) => setMessage(data));
   },[]);

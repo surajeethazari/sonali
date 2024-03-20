@@ -9,6 +9,8 @@ import SignUp from "./pages/Signup";
 import SignIn from './pages/Signin';
 import PrimarySearchAppBar from './components/Appbar';
 
+require("dotenv").config();
+
 const defaultTheme = createTheme({
   palette: {
       primary: {
@@ -32,7 +34,7 @@ function App() {
     from: { opacity: 0, transform: 'translate3d(0,-50%,0)' },
     to: { opacity: 1, transform: 'translate3d(0,80,0)' }
   });
-
+  console.log(process.env.BE_URL);
   useEffect(() => {
     
   }, []);

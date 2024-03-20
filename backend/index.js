@@ -7,8 +7,9 @@ const io = require('socket.io')(server, {
     cors: {
       origin: '*',
     }
-  });
+});
 require("dotenv").config();
+
 
 let userRoter = require("./routes/client");
 app.use("/client", userRoter);
@@ -20,14 +21,20 @@ io.on('connection', (socket) => {
 });
 
 // connect MongoDB
-mongoose.connect(process.env.MONGODB_URI).then(() => {
-    const PORT = process.env.PORT || 8000
+// mongoose.connect(process.env.MONGODB_URI).then(() => {
+//     const PORT = process.env.PORT || 8000
+//     server.listen(PORT, () => {
+//         console.log(`App is Listening on PORT ${PORT}`);
+//     })
+// }).catch(err => {
+//     console.log(err);
+// });
+
+const PORT = process.env.PORT || 8000
+console.log(process.env.PORT)
     server.listen(PORT, () => {
         console.log(`App is Listening on PORT ${PORT}`);
     })
-}).catch(err => {
-    console.log(err);
-});
 
 app.get("/", (req, res) => {
     res.send({msg: "welcome"})
