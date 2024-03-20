@@ -9,8 +9,6 @@ import SignUp from "./pages/Signup";
 import SignIn from './pages/Signin';
 import PrimarySearchAppBar from './components/Appbar';
 
-require("dotenv").config();
-
 const defaultTheme = createTheme({
   palette: {
       primary: {
