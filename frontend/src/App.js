@@ -44,7 +44,7 @@ function Copyright(props) {
 function App() {
   const [message, setMessage] = useState([]);
   useEffect(() => {
-    fetch(process.env.REACT_APP_BE_URI + "/client", { mode: 'no-cors'})
+    fetch(process.env.REACT_APP_BE_URI + "/client")
       .then((res) => res.json())
       .then((data) => setMessage(data));
   },[]);
