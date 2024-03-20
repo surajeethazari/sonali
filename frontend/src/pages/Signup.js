@@ -93,11 +93,13 @@ export default function SignUp() {
             </Button>
             
           </Box>
-          <Typography variant="h6" color={'primary'}>
+          <Typography variant="body2" color={'primary'}>
                  Already have an account?
               
-                 <Link to="/signin"  sx={{ m: 2, color: 'secondary.main' }}>
-                  Login
+                 <Link to="/signin">
+                  <Typography component="span" variant="body2" color={'secondary'} mx={1}>
+                    Login
+                 </Typography>
                 </Link>
                 </Typography>
         </Box>

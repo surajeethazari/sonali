@@ -23,6 +23,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Divider, SwipeableDrawer, TextField } from '@mui/material';
+import { useNavigate, NavLink } from "react-router-dom";
 import Search from '@mui/icons-material/Search';
 
 const navItems = ['Collection', 'About', 'Contact'];
@@ -120,7 +121,7 @@ function DefaultAppBar() {
           </List>
           <Box  justifyContent="end" sx={{  flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}>
              <React.Fragment key={'top'}>
-                <IconButton onClick={toggleDrawer(true)} size="large" aria-label="search" color="inherit">
+                <IconButton onClick={toggleDrawer(true)} size="large" aria-label="search" color="inherit" sx={{ "&:hover": { color: "secondary.main" } }}>
                   <SearchIcon />
                 </IconButton>
                 <SwipeableDrawer
@@ -138,11 +139,11 @@ function DefaultAppBar() {
               size="large"
               color="inherit"
             >
-              <Badge badgeContent={17} color="error">
-                <ShoppingCart />
+              <Badge badgeContent={17} color="error" sx={{ "&:hover": { color: "secondary.main" } }}>
+                <ShoppingCart/>
               </Badge>
             </IconButton>
-            <IconButton size="large" aria-label="search" color="inherit">
+            <IconButton size="large" aria-label="search" color="inherit" sx={{ "&:hover": { color: "secondary.main" } }}>
              <AccountCircle />
             </IconButton>
             <Box sx={{display: { xs: 'flex', md: 'none' } }}>

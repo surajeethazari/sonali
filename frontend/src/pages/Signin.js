@@ -86,14 +86,22 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link color={'secondary.main'} to="/resetPassword"  variant="body2">
-                  Forgot password?
+                <Link to="/resetPassword" >
+                  <Typography variant="body2" color={'secondary'}>
+                    Forgot password?
+                 </Typography>
                 </Link>
               </Grid>
               <Grid item>
-                <Link to="/signup"  variant="body2">
-                  {"Don't have an account? Sign Up"}
+              <Typography variant="body2" color={'primary'}>
+              {"Don't have an account?"}
+              
+                 <Link to="/signup">
+                  <Typography component="span" variant="body2" color={'secondary'} mx={1}>
+                    Signup
+                 </Typography>
                 </Link>
+                </Typography>
               </Grid>
             </Grid>
           </Box>

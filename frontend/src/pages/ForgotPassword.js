@@ -26,7 +26,7 @@ export default function ForgotPassword() {
         <Box
           height={200}
           width={500}
-          my={25}
+          my={10}
           mx={-10}
           display="flex"
           alignItems="center"
