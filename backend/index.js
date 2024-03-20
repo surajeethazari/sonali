@@ -16,6 +16,13 @@ require("dotenv").config();
 
 let userRoter = require("./routes/client");
 app.use("/client", userRoter);
+app.use(cors({
+        origin: '*',
+        methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+        allowedHeaders: ['my-custom-header'],
+        credentials: true
+    }
+));
 
 io.on('connection', (socket) => {
     console.log('Client connected');
