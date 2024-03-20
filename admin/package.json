@@ -13,8 +13,7 @@
     "react-scripts": "5.0.1",
     "react-spring": "^9.7.3",
     "socket.io-client": "^4.7.5",
-    "styled-components": "^6.1.8",
-    "dotenv": "^16.4.5"
+    "styled-components": "^6.1.8"
   },
   "scripts": {
     "start": "react-scripts start",
