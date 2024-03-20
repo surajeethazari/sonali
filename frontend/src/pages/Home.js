@@ -11,7 +11,7 @@ export default function Home(props) {
   return (
       <Container maxWidth="xl">
         <Box sx={{ my: 2 }}>
-          {[...new Array(12)]
+          {[...new Array(121)]
             .map(
               () => `Cras mattis consectetur purus sit amet fermentum.
 Cras justo odio, dapibus ac facilisis in, egestas eget quam.
