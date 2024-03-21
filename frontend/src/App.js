@@ -5,8 +5,7 @@ import Link from '@mui/material/Link';
 import { useEffect, useState } from "react";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {
-  createBrowserRouter,
-  RouterProvider,
+  BrowserRouter as Router, Routes, Route
 } from "react-router-dom";
 
 import Home from './pages/Home';
@@ -15,31 +14,12 @@ import SignIn from './pages/Signin';
 import ForgotPassword from './pages/ForgotPassword';
 import DefaultAppBar from './components/Appbar';
 import ErrorPage from './pages/ErrorPage';
-import BreadCrumbs from './components/BreadCrumbs';
 import Footer from './components/Footer';
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home/>,
-    errorElement: <ErrorPage/>
-  },
-  {
-    path: "/signin",
-    element: <SignIn/>,
-    errorElement: <ErrorPage/>
-  },
-  {
-    path: "/signup",
-    element: <SignUp/>,
-    errorElement: <ErrorPage/>
-  },
-  {
-    path: "/resetPassword",
-    element: <ForgotPassword/>,
-    errorElement: <ErrorPage/>
-  },
-]);
+import Cart from './pages/Cart';
+import Contact from './pages/Contact';
+import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
+import Checkout from './pages/Checkout';
 
 
 const defaultTheme = createTheme({
@@ -48,13 +28,16 @@ const defaultTheme = createTheme({
         main: '#fff'
       },
       primary: {
-          main: colors.grey[800]
+          main: colors.grey[800],
+          light: colors.grey[200]
       },
       secondary: {
-          main: colors.teal[600]
+          main: colors.teal[600],
+          light: colors.teal[200]
       },
       tertiary: {
-          main: colors.yellow[300]
+          main: colors.yellow[300],
+          light: colors.yellow[100]
       },
       mode: "light"
   }
@@ -70,10 +53,23 @@ function App() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <DefaultAppBar/>
-      {/* <BreadCrumbs/> */}
-      <RouterProvider router={router}/>
-      <Footer props={null}/>
+      <Router>
+        <DefaultAppBar/>
+        <div style={{marginBottom: '80px'}}/>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/resetPassword" element={<ForgotPassword />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/detail/:title" element={<ProductDetail />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/*" element={<ErrorPage />} />
+        </Routes>
+        <Footer/>
+      </Router>
     </ThemeProvider>
   );
 }

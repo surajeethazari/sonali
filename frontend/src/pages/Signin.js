@@ -11,9 +11,11 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useNavigate, Link } from "react-router-dom";
+import BreadCrumbs from '../components/BreadCrumbs';
 
 
 export default function SignIn() {
+  let crumbs = [{name: "Home", trigger: "/", active: false}, {name: "Sign In", trigger: "/signin",  active: false}]
   const navigate = useNavigate();
 
 
@@ -28,6 +30,8 @@ export default function SignIn() {
   };
 
   return (
+    <Container maxWidth="xl">
+       <BreadCrumbs crumbs={crumbs}/>
       <Container component="main" maxWidth="xs">
         <Box
           height={400}
@@ -58,7 +62,6 @@ export default function SignIn() {
               label="Email Address"
               name="email"
               autoComplete="email"
-              autoFocus
             />
             <TextField
               color="secondary"
@@ -107,6 +110,7 @@ export default function SignIn() {
             </Grid>
           </Box>
         </Box>
+      </Container>
       </Container>
   );
 }

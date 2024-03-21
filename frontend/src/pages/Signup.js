@@ -11,10 +11,12 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useNavigate, Link } from "react-router-dom";
+import BreadCrumbs from '../components/BreadCrumbs';
 
 
 
 export default function SignUp() {
+  let crumbs = [{name: "Home", trigger: "/", active: false}, {name: "Sign Up", trigger: "/signup",  active: false}]
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -29,6 +31,8 @@ export default function SignUp() {
   };
 
   return (
+    <Container maxWidth="xl">
+       <BreadCrumbs crumbs={crumbs}/>
       <Container component="main" maxWidth="xs">
         <Box
           height={430}
@@ -59,7 +63,6 @@ export default function SignUp() {
               label="Name"
               name="name"
               autoComplete="name"
-              autoFocus
             />
             <TextField
               color="secondary"
@@ -105,5 +108,6 @@ export default function SignUp() {
                 </Typography>
         </Box>
       </Container>
+    </Container>
   );
 }

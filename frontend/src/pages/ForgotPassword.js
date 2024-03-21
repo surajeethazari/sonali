@@ -10,9 +10,11 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import BreadCrumbs from '../components/BreadCrumbs';
 
 
 export default function ForgotPassword() {
+  let crumbs = [{name: "Home", trigger: "/", active: false}, {name: "Sign In", trigger: "/signin",  active: true}, {name: "Reset", trigger: "/resetPassword",  active: false}]
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -22,6 +24,8 @@ export default function ForgotPassword() {
   };
 
   return (
+    <Container maxWidth="xl">
+       <BreadCrumbs crumbs={crumbs}/>
       <Container component="main" maxWidth="xs">
         <Box
           height={200}
@@ -52,7 +56,6 @@ export default function ForgotPassword() {
               label="Email Address"
               name="email"
               autoComplete="email"
-              autoFocus
             />
             <Button
               type="submit"
@@ -66,6 +69,7 @@ export default function ForgotPassword() {
             </Button>
           </Box>
         </Box>
+      </Container>
       </Container>
   );
 }

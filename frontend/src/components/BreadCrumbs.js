@@ -1,19 +1,24 @@
 import { Box, Breadcrumbs, Container, Typography } from '@mui/material'
 import React, { Component } from 'react'
 import { useNavigate, Link } from "react-router-dom";
+import { useTheme } from '@mui/material/styles';
 
 export default function BreadCrumbs(props) {
+    const theme = useTheme();
     return (
-      <Container component="main" maxWidth="xl">
-      <Breadcrumbs aria-label="breadcrumb" m={2}>
-          <Typography component="span" variant="body2" color={'secondary'} mx={1}  sx={{ "&:hover": { color: "secondary.main" } }}>
-                    Home
-            </Typography>
-          <Typography component="span" variant="body2" color={'secondary'} mx={1}  sx={{ "&:hover": { color: "secondary.main" } }}>
-                    Login
-                 </Typography>
-      </Breadcrumbs>
-    </Container>
+        <Breadcrumbs aria-label="breadcrumb" sx={{marginTop: 12}}>
+            {props.crumbs.map((breadcrumb, index) => (
+                 <Link key={index} to={breadcrumb.trigger} style={{
+                    marginTop: "2px",
+                    textDecoration: 'none',
+                    letterSpacing: '.rem',
+                    color: theme.palette.primary.main,
+                    textDecoration: 'none'
+                  }}>
+                  {breadcrumb.name}
+              </Link>
+            ))}
+        </Breadcrumbs>
     )
   
 }

@@ -23,16 +23,27 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Divider, SwipeableDrawer, TextField } from '@mui/material';
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink, Link } from "react-router-dom";
 import Search from '@mui/icons-material/Search';
+import { useTheme } from '@mui/material/styles';
 
-const navItems = ['Collection', 'About', 'Contact'];
+const navItems = ['Collection', 'Contact'];
 
 
 
 function DefaultAppBar() {
-  const [state, setState] = React.useState(false)
+  const theme = useTheme();
+  const navigate = useNavigate();
 
+  const [state, setState] = React.useState(false)
+  const handleAcooutClick = () => {
+    navigate('/signin')
+  }
+
+  const handleNavItemClick = (navItemName) => {
+    const navHash = ['products', 'about', 'contact']; 
+    navigate('/' + navHash[navItems.findIndex(item => item === navItemName)]);
+  }
 
   const searchSection = () => (
     <Box
@@ -78,10 +89,9 @@ function DefaultAppBar() {
 
     setState(open);
   };
-  
 
   return (
-    <AppBar position="static" color='appmain'>
+    <AppBar  position="fixed" color='appmain'>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{
@@ -89,26 +99,22 @@ function DefaultAppBar() {
               display: { xs: 'flex', md: 'flex' },
             }}>
           <Avatar alt="SF" src={logo_white} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              fontFamily: 'fantasy',
-              fontWeight: 700,
-              letterSpacing: '.rem',
-              color: 'inherit',
-              textDecoration: 'none'
-            }}
-          >
-            Sonali Fashion
-          </Typography>
+          <Link to="/" style={{
+                marginTop: "2px",
+                textDecoration: 'none',
+                fontFamily: 'fantasy',
+                fontWeight: 700,
+                fontSize: '25px',
+                letterSpacing: '.rem',
+                color: theme.palette.primary.main,
+                textDecoration: 'none'
+              }}>
+              Sonali Fashion
+          </Link>
           </Box>
           <List sx={{  flexGrow: 0.1, display: { xs: 'none', md: 'flex' } }}>
             {navItems.map((item) => (
-              <ListItem key={item} >
+              <ListItem onClick={() => handleNavItemClick(item)} key={item} >
                 <ListItemButton sx={{ textAlign: 'center' }}>
                   <ListItemText primary={item} />
                 </ListItemButton>
@@ -132,6 +138,7 @@ function DefaultAppBar() {
            
             
             <IconButton
+              onClick={() => navigate('/cart')}
               size="large"
               color="inherit"
             >
@@ -139,7 +146,7 @@ function DefaultAppBar() {
                 <ShoppingCart/>
               </Badge>
             </IconButton>
-            <IconButton size="large" aria-label="search" color="inherit" sx={{ "&:hover": { color: "secondary.main" } }}>
+            <IconButton onClick={() => navigate('/signin')} size="large" aria-label="search" color="inherit" sx={{ "&:hover": { color: "secondary.main" } }}>
              <AccountCircle />
             </IconButton>
             <Box sx={{display: { xs: 'flex', md: 'none' } }}>
@@ -178,8 +185,6 @@ function DefaultAppBar() {
               </Menu>
             </Box>
           </Box>
-          
-         
         </Toolbar>
       </Container>
     </AppBar>
