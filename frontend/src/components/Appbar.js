@@ -37,15 +37,11 @@ function DefaultAppBar() {
   const searchSection = () => (
     <Box
       height={100}
-      p={5}
+      p={15}
       alignItems="center"
       justifyContent="center"
-      sx={{}}
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
     >
-
-      <IconButton sx={{position: 'absolute', top: '5px', right: '10px'}} size="large" aria-label="search" color="inherit">
+      <IconButton onClick={toggleDrawer(false)} sx={{position: 'absolute', top: '5px', right: '10px'}} size="large" aria-label="search" color="inherit">
           <CloseRounded />
       </IconButton>
        <TextField

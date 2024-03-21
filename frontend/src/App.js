@@ -71,7 +71,7 @@ function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <DefaultAppBar/>
-      <BreadCrumbs/>
+      {/* <BreadCrumbs/> */}
       <RouterProvider router={router}/>
       <Footer props={null}/>
     </ThemeProvider>
