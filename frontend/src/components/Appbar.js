@@ -41,7 +41,7 @@ function DefaultAppBar() {
   }
 
   const handleNavItemClick = (navItemName) => {
-    const navHash = ['products', 'about', 'contact']; 
+    const navHash = ['products', 'contact']; 
     navigate('/' + navHash[navItems.findIndex(item => item === navItemName)]);
   }
 
