@@ -20,7 +20,7 @@ export default function Contact() {
     },
     zoom: 11
   };
-  let crumbs = [{name: "Home", trigger: "/", active: false}, {name: "Contact Us", trigger: "/contact",  active: true}]
+  let crumbs = [{name: "Home", trigger: "/", active: true}, {name: "Contact Us", trigger: "/contact",  active: false}]
   return (
     <div>
       <Container maxWidth="xl">

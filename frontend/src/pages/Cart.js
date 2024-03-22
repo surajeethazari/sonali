@@ -23,7 +23,7 @@ export default function Cart() {
   const obj = useLocation();
   const [item, setItem] = React.useState(obj.state.item);
 
-  let crumbs = [{name: "Home", trigger: "/", active: false}, {name: "Cart", trigger: "/cart",  active: true}]
+  let crumbs = [{name: "Home", trigger: "/", active: true}, {name: "Cart", trigger: "/cart",  active: false}]
   return (
     <Container maxWidth="xl">
       <BreadCrumbs crumbs={crumbs}/>
@@ -130,6 +130,11 @@ export default function Cart() {
                 (Inclusive of tax 0.00 /-)
                 </Typography>
                 <Button
+                    onClick={() =>  navigate('/checkout', {
+                      state: {
+                        item: item
+                      }
+                    })}
                     type="submit"
                     variant="contained"
                     sx={{ '&:hover': {

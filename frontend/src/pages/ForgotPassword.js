@@ -14,7 +14,7 @@ import BreadCrumbs from '../components/BreadCrumbs';
 
 
 export default function ForgotPassword() {
-  let crumbs = [{name: "Home", trigger: "/", active: false}, {name: "Sign In", trigger: "/signin",  active: true}, {name: "Reset", trigger: "/resetPassword",  active: false}]
+  let crumbs = [{name: "Home", trigger: "/", active: true}, {name: "Sign In", trigger: "/signin",  active: true}, {name: "Reset", trigger: "/resetPassword",  active: false}]
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);

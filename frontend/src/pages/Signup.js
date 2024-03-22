@@ -16,7 +16,7 @@ import BreadCrumbs from '../components/BreadCrumbs';
 
 
 export default function SignUp() {
-  let crumbs = [{name: "Home", trigger: "/", active: false}, {name: "Sign Up", trigger: "/signup",  active: false}]
+  let crumbs = [{name: "Home", trigger: "/", active: true}, {name: "Sign Up", trigger: "/signup",  active: false}]
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {

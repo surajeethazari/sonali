@@ -11,7 +11,7 @@ import data from '../assets/data/featuredCollection.json'
 
 export default function AccountDetails() {
     const navigate = useNavigate();
-    let crumbs = [{name: "Home", trigger: "/", active: false}, {name: "My Account", trigger: "/userdetails",  active: true}]
+    let crumbs = [{name: "Home", trigger: "/", active: true}, {name: "My Account", trigger: "/userdetails",  active: false}]
 
   return (
     <Container maxWidth="xl">
@@ -35,7 +35,7 @@ export default function AccountDetails() {
                                 image={item.img}
                                 alt="Image Title"
                             />
-                            <Box display="flex" flexDirection={'column'} sx={{marginLeft: 1}}>
+                            <Box display="flex" width={'300px'}  justifyContent={'space-arround'} flexDirection={'column'} sx={{marginLeft: 1}}>
                                 <Typography onClick={() =>  navigate('/detail/' + item.title, {
                                 state: {
                                     item: item
@@ -43,7 +43,10 @@ export default function AccountDetails() {
                                 })}  variant="body2" component="div" sx={{fontWeight: 'bold'}}>
                                 {item.title}
                                 </Typography>
-                                <Typography component={'span'} variant="body2" color={'secondary.main'} sx={{fontWeight: 'bold', marginTop: "5px"}}>
+                                <Typography component={'span'}  variant="body2" color={'primary.main'} sx={{fontWeight: '400', marginTop: "5px"}}>
+                                    Color: Blue, Size: XL
+                                </Typography>
+                                <Typography component={'span'} variant="body2" color={'primary.main'} sx={{fontWeight: '400', marginTop: "5px"}}>
                                     2 × {item.Price} /-
                                 </Typography>
                             </Box>

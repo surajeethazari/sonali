@@ -36,7 +36,7 @@ function valuetext(value) {
 
 export default function Products() {
   const [value, setValue] = React.useState([0, 100]);
-  let crumbs = [{name: "Home", trigger: "/", active: false}, {name: "Collection", trigger: "/products",  active: true}]
+  let crumbs = [{name: "Home", trigger: "/", active: true}, {name: "Collection", trigger: "/products",  active: false}]
 
   const navigate = useNavigate();
   const theme = useTheme();

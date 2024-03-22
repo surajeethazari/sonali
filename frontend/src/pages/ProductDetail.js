@@ -1,14 +1,13 @@
 import { Box, Button, CardMedia, Container, Divider, IconButton, TextField, Typography } from '@mui/material'
 import React from 'react'
 import BreadCrumbs from '../components/BreadCrumbs'
-import { useParams, useLocation  } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { Carousel } from 'antd';
 import Constants from '../utils/Constants';
 import Slide from '@mui/material/Slide';
 import CloseRounded from '@mui/icons-material/CloseRounded';
-import { useNavigate, NavLink, Link } from "react-router-dom";
+import { useNavigate, Link , useParams, useLocation } from "react-router-dom";
 import ArrowForwardTwoTone from '@mui/icons-material/ArrowForwardTwoTone';
 
 
@@ -22,7 +21,7 @@ export default function ProductDetail(props) {
   const params = useParams();
   const obj = useLocation();
   const [item, setItem] = React.useState(obj.state.item);
-  let crumbs = [{name: "Home", trigger: "/", active: false}, {name: "Collection", trigger: "/products",  active: true}, {name: params.title, trigger: "/detail/"+ params.title,  active: false}];
+  let crumbs = [{name: "Home", trigger: "/", active: true}, {name: "Collection", trigger: "/products",  active: true}, {name: params.title, trigger: "/detail/"+ params.title,  active: false}];
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
