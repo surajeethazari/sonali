@@ -20,6 +20,8 @@ import Contact from './pages/Contact';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import Checkout from './pages/Checkout';
+import AccountDetails from './pages/AccountDetails';
+import PaymentSuccess from './pages/PaymentSuccess';
 
 
 const defaultTheme = createTheme({
@@ -61,11 +63,13 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/resetPassword" element={<ForgotPassword />} />
+          <Route path="/userdetails" element={<AccountDetails />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/products" element={<Products />} />
           <Route path="/detail/:title" element={<ProductDetail />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/paymentSuccess" element={<PaymentSuccess />} />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
         <Footer/>

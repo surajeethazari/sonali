@@ -1,4 +1,4 @@
-import { Box, Button, CardMedia, Container, TextField, Typography } from '@mui/material'
+import { Box, Button, CardMedia, Container, Divider, IconButton, TextField, Typography } from '@mui/material'
 import React from 'react'
 import BreadCrumbs from '../components/BreadCrumbs'
 import { useParams, useLocation  } from "react-router-dom";
@@ -7,6 +7,10 @@ import Alert from '@mui/material/Alert';
 import { Carousel } from 'antd';
 import Constants from '../utils/Constants';
 import Slide from '@mui/material/Slide';
+import CloseRounded from '@mui/icons-material/CloseRounded';
+import { useNavigate, NavLink, Link } from "react-router-dom";
+import ArrowForwardTwoTone from '@mui/icons-material/ArrowForwardTwoTone';
+
 
 function SlideTransition(props) {
   return <Slide {...props} direction="up" />;
@@ -14,6 +18,7 @@ function SlideTransition(props) {
 
 
 export default function ProductDetail(props) {
+  const navigate = useNavigate();
   const params = useParams();
   const obj = useLocation();
   const [item, setItem] = React.useState(obj.state.item);
@@ -36,8 +41,8 @@ export default function ProductDetail(props) {
     <div>
       <Container maxWidth="xl">
         <BreadCrumbs crumbs={crumbs}/>
-          <Box width={'100%'} justifyContent={'space-between'} display="flex" flexDirection={'row'} sx={{marginTop: 5}}>
-              <Box width={'48%'}  display="flex" flexDirection={'column'} sx={{}}>
+          <Box width={'100%'} justifyContent={'space-between'} display="flex" sx={{marginTop: 5, flexDirection: { xs: 'column', md: 'row'}}}>
+              <Box display="flex" flexDirection={'column'} sx={{width: {xs: '100%', md: '48%'}}}>
               <Carousel dotPosition="right" autoplay effect="fade" dots="false">
                   <CardMedia
                     component="img"
@@ -53,7 +58,7 @@ export default function ProductDetail(props) {
                   />
               </Carousel>
               </Box>
-              <Box width={'48%'} display="flex" flexDirection={'column'}  sx={{}}>
+              <Box  display="flex" flexDirection={'column'}  sx={{width: {xs: '100%', md: '48%', marginBottom: "100px"}}}>
               
                 <Typography color={'primary.main'}  variant="h4" component="div" sx={{fontWeight: 'bold'}}>
                 {item.title}
@@ -91,7 +96,7 @@ export default function ProductDetail(props) {
                   variant="filled"
                 />
 
-                <Button
+                  <Button
                     onClick={handleClick}
                     type="submit"
                     fullWidth
@@ -103,14 +108,47 @@ export default function ProductDetail(props) {
                     {Constants.addToCartText}
                   </Button>
                   <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right' }} key="Slide" open={open} onClose={handleClose}>
-                    <Alert
-                      onClose={handleClose}
-                      severity="success"
-                      variant="filled"
-                      sx={{ width: '100%' }}
-                    >
-                      This is a success Alert inside a Snackbar!
-                    </Alert>
+                     <Box width={"400px"} display="flex" flexDirection={'column'} alignItems={'center'} justifyContent={"space-between"} sx={{marginTop: -2, zIndex: 999, padding: 3, backgroundColor: 'appmain.main', boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)'}}>
+                        <Box width={"100%"} justifyContent={'space-between'} display="flex" flexDirection={'row'}  sx={{marginTop: 1}}>
+                          <Typography color={'primary.main'}  variant="h6" component="div" sx={{fontWeight: 'bold'}}>
+                            JUST ADDED TO YOUR CART
+                          </Typography>
+                          <IconButton onClick={handleClose} size="large" aria-label="search" color="inherit" sx={{marginTop: -1}}>
+                              <CloseRounded />
+                          </IconButton>
+                        </Box>
+                        <Divider sr={{marginTop: 2}}/>
+                        <Box width={"100%"} justifyContent={'space-between'} display="flex" flexDirection={'row'}  sx={{marginTop: 1}}>
+                           <Typography color={'primary.main'}  variant="h6" component="div" sx={{fontWeight: 'bold'}}>
+                            {item.title}
+                          </Typography>
+                          <Typography color={'primary.main'}  variant="h6" component="div" sx={{fontWeight: 'bold'}}>
+                            Qty: 2
+                          </Typography>
+                        </Box>
+                        <Button
+                          onClick={() =>  navigate('/cart', {
+                            state: {
+                              item: [item]
+                            }
+                          })}
+                          endIcon={<ArrowForwardTwoTone />}
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            sx={{ '&:hover': {
+                              backgroundColor: 'secondary.main',
+                            }, mt: 3, mb: 2 }}
+                          >
+                            VIEW CART (1)
+                          </Button>
+                          <Link to="/products">
+                            <Typography color={'primary.main'}  variant="h6" component="div" sx={{fontWeight: 'bold'}}>
+                              {Constants.continueShoppingText}
+                            </Typography>
+                          </Link>
+                      
+                    </Box>
                   </Snackbar>
               
                   <Box width={'48%'} display="flex" flexDirection={'row'}  sx={{marginTop: 2}}>

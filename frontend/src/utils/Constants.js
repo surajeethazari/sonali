@@ -15,5 +15,11 @@ let Constants = {
     sizeText: "Size",
     brandText: "Brand",
     addToCartText: "Add To Cart",
+    // Account Details
+    myAccountText: "My Account",
+    accountDetailsText: "Account Details",
+    orderHistoryText: "Order History",
+    noOrderFoundText: "You have not placed any orders yet",
+    logOutText: "Logout"
 }
 export default Constants;

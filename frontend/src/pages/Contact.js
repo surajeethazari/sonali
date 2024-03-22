@@ -25,8 +25,8 @@ export default function Contact() {
     <div>
       <Container maxWidth="xl">
         <BreadCrumbs crumbs={crumbs}/>
-          <Box width={'100%'} justifyContent={'space-between'} display="flex" flexDirection={'row'} sx={{marginTop: 5}}>
-              <Box width={'48%'}  display="flex" flexDirection={'column'} sx={{}}>
+          <Box width={'100%'} justifyContent={'space-between'} display="flex" sx={{marginTop: 5, flexDirection: { xs: 'column', md: 'row'}}}>
+              <Box display="flex" flexDirection={'column'} sx={{width: {xs: '100%', md: '48%'}}}>
                 <Typography color={'primary.main'}  variant="h4" component="div" sx={{fontWeight: 'bold'}}>
                 Location
                 </Typography>
@@ -85,7 +85,7 @@ export default function Contact() {
                   </Box>
                </Box>
               </Box>
-              <Box width={'48%'} display="flex" flexDirection={'column'}  sx={{}}>
+              <Box display="flex" flexDirection={'column'}  sx={{width: {xs: '100%', md: '48%'}, marginBottom: "60px", marginTop: {xs: "50px", md: 0}}}>
               
                 <Typography color={'primary.main'}  variant="h4" component="div" sx={{fontWeight: 'bold'}}>
                 Contact Form

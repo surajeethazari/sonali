@@ -124,7 +124,7 @@ export default function Products() {
               </Box>
             </Box>
             <Box width={'100%'} justifyContent={'space-between'} display="flex" flexDirection={'row'} m={1} sx={{}}>
-                <Box width={'22%'}  display="flex" flexDirection={'column'} sx={{}}>
+                <Box flexDirection={'column'} sx={{display: { xs: 'none', md: 'flex'}, width: {xs: "0%", md: "22%"}}}>
                   <Typography color={'primary.main'}  variant="h6" component="div" sx={{fontWeight: 'normal'}}>
                       {Constants.priceText}
                   </Typography>
@@ -166,7 +166,7 @@ export default function Products() {
                   ))}
                   </FormGroup>
               </Box>
-              <Box width={'75%'} display="flex" alignItems={'center'} flexDirection={'column'} m={1} sx={{}}>
+              <Box width={'75%'} display="flex" alignItems={'center'} flexDirection={'column'} m={1} sx={{ width: {xs: "100%", md: "75%"}}}>
                 <Masonry sx={{marginTop: 1}} columns={3} spacing={2}>
                   {data.map((item, index) => (
                     <Paper elevation={8} key={index} sx={{height: item.height}}> 
