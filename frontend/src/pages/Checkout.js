@@ -1,16 +1,24 @@
-import { Badge, Box, CardMedia, Container, Divider, Paper, Typography, Breadcrumbs } from '@mui/material'
+import { Badge, Box, CardMedia, Container, Divider, Paper, Typography, Breadcrumbs, FormControlLabel, Button, TextField, Grid, FormGroup, Checkbox, MenuItem, Select, InputLabel, FormControl } from '@mui/material'
 import React from 'react'
 import BreadCrumbs from '../components/BreadCrumbs'
 import { useNavigate, useLocation } from "react-router-dom";
+import Constants from '../utils/Constants';
 
 export default function Checkout() {
     const navigate = useNavigate();
     const obj = useLocation();
     const [item, setItem] = React.useState(obj.state.item);
-    console.log(item)
+    const [country, setCountry] = React.useState('');
+    const [province, setProvince] = React.useState('');
     let crumbs = [{name: "Home", trigger: "/", active: true}, {name: "Payment Success", trigger: "/paymentSuccess",  active: false}]
     let paymentCrumbs = [{name: "Contact Information", active: false}, {name: "Shipment",  active: true}, {name: "Payment",  active: true}]
+    const handleChangeProvince = (event) => {
+      setProvince(event.target.value);
+    }
 
+    const handleChangeCountry = (event) => {
+      setCountry(event.target.value);
+    }
   return (
      <Container maxWidth="xl">
         <BreadCrumbs crumbs={crumbs}/>
@@ -18,11 +26,119 @@ export default function Checkout() {
             <Box display="flex" flexDirection={'column'}  sx={{width: {xs: '100%', md: '48%', marginBottom: "100px"}}}>
               <Breadcrumbs aria-label="breadcrumb">
               {paymentCrumbs.map((breadcrumb, index) => (
-                <Typography component={'span'}  variant="body2" color={breadcrumb.active ? 'secondary.main':'primary.main'} sx={{fontWeight: '400', marginTop: "5px"}}>
+                <Typography key={index} component={'span'}  variant="body2" color={breadcrumb.active ? 'secondary.main':'primary.main'} sx={{fontWeight: '400', marginTop: "5px"}}>
                 {breadcrumb.name}
                 </Typography>
               ))}
               </Breadcrumbs>
+              <Typography variant="h6" component="div" sx={{fontWeight: 'bold', marginTop: "10px"}}>
+                Contact: Surajeet407@gmail.com
+              </Typography>
+              <Typography variant="h4" color={'primary'} sx={{marginTop: 4}}>
+                Shipping Address
+              </Typography>
+
+
+              <Box component="form" noValidate sx={{ mt: 3 }}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      autoComplete="given-name"
+                      name="name"
+                      required
+                      fullWidth
+                      label="Full Name"
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      required
+                      fullWidth
+                      label="Phone"
+                      name="phone"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      required
+                      fullWidth
+                      label="Address"
+                      name="address"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      required
+                      fullWidth
+                      label="City"
+                      name="city"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <FormControl fullWidth>
+                      <InputLabel>Country</InputLabel>
+                      <Select
+                        value={country}
+                        fullWidth
+                        label="Country"
+                        onChange={handleChangeCountry}
+                      >
+                        <MenuItem value={'India'}>India</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <FormControl fullWidth>
+                      <InputLabel>Province</InputLabel>
+                      <Select
+                        value={province}
+                        fullWidth
+                        label="Province"
+                        onChange={handleChangeProvince}
+                      >
+                        <MenuItem value={'West Bengal'}>West Bengal</MenuItem>
+                        <MenuItem value={'Delhi'}>Delhi</MenuItem>
+                        <MenuItem value={'Karnataka'}>Karnataka</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      required
+                      fullWidth
+                      label="Postal Code"
+                      name="pincode"
+                    />
+                  </Grid>
+                </Grid>
+              </Box>
+              <Typography variant="h4" color={'primary'} sx={{marginTop: 4}}>
+                Shipping Method
+              </Typography>
+
+              <FormGroup>
+                <FormControlLabel control={<Checkbox defaultChecked />} label="Standard Delivery - 0/-" />
+                <FormControlLabel required control={<Checkbox />} label="Express Delivery - 50/-" />
+              </FormGroup>
+               
+              <Typography variant="h4" color={'primary'} sx={{marginTop: 4}}>
+                Payment Method
+              </Typography>
+
+
+              <Button
+                  onClick={() =>  navigate('/paymentSuccess', {
+                    state: {
+                      item: item
+                    }
+                  })}
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  {Constants.continueePaymentText}
+                </Button>
             </Box>
             <Box display="flex" flexDirection={'column'}  sx={{width: {xs: '100%', md: '48%', marginBottom: "100px"}}}>
               <Box sx={{height: item.height, marginTop: 2, height: '80px' }}> 

@@ -20,6 +20,8 @@ let Constants = {
     accountDetailsText: "Account Details",
     orderHistoryText: "Order History",
     noOrderFoundText: "You have not placed any orders yet",
-    logOutText: "Logout"
+    logOutText: "Logout",
+    //Checkout
+    continueePaymentText: "Continuee Payment"
 }
 export default Constants;
