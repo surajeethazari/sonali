@@ -34,13 +34,13 @@ function DefaultAppBar() {
   const [state, setState] = React.useState(false)
   const handleAcooutClick = () => {
     navigate('/signin');
-    window.scrollTo(0, 0);
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
   const handleNavItemClick = (navItemName) => {
     const navHash = ['products', 'contact']; 
     navigate('/' + navHash[navItems.findIndex(item => item === navItemName)]);
-    window.scrollTo(0, 0);
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
   const searchSection = () => (
@@ -97,7 +97,7 @@ function DefaultAppBar() {
               display: { xs: 'flex', md: 'flex' },
             }}>
           <Avatar alt="SF" src={logo_transparent} />
-          <Link to="/" onClick={() => window.scrollTo(0, 0)} style={{
+          <Link to="/" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{
                 marginLeft: "10px",
                 marginTop: "2px",
                 textDecoration: 'none',

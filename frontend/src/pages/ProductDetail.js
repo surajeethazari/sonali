@@ -141,7 +141,7 @@ export default function ProductDetail(props) {
                           >
                             VIEW CART (1)
                           </Button>
-                          <Link to="/products" onClick={() => window.scrollTo(0, 0)}>
+                          <Link to="/products" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
                             <Typography color={'primary.main'}  variant="h6" component="div" sx={{fontWeight: 'bold'}}>
                               {Constants.continueShoppingText}
                             </Typography>

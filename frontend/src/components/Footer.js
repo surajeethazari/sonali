@@ -111,7 +111,7 @@ export default function Footer() {
                       Information
                       </Typography>
                       <Divider sx={{color: theme.palette.appmain.main, marginTop: 1}}/>
-                      <Link to="" onClick={() => window.scrollTo(0, 0)} style={{
+                      <Link to="" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{
                          cursor: "pointer",
                           marginTop: "5px",
                           fontFamily: "Roboto, Helvetica, Arial, sans-serif",
@@ -123,7 +123,7 @@ export default function Footer() {
                         }}>
                         About Us
                       </Link>
-                      <Link to="" onClick={() => window.scrollTo(0, 0)} style={{
+                      <Link to="" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{
                          cursor: "pointer",
                           marginTop: "5px",
                           fontFamily: "Roboto, Helvetica, Arial, sans-serif",
@@ -135,7 +135,7 @@ export default function Footer() {
                         }}>
                       Terms & Conditions
                       </Link>
-                      <Link to="" onClick={() => window.scrollTo(0, 0)} style={{
+                      <Link to="" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{
                          cursor: "pointer",
                           marginTop: "5px",
                           fontFamily: "Roboto, Helvetica, Arial, sans-serif",
@@ -147,7 +147,7 @@ export default function Footer() {
                         }}>
                       Returns & Exchanges
                       </Link>
-                      <Link to="" onClick={() => window.scrollTo(0, 0)} style={{
+                      <Link to="" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{
                          cursor: "pointer",
                           marginTop: "5px",
                           fontFamily: "Roboto, Helvetica, Arial, sans-serif",
@@ -159,7 +159,7 @@ export default function Footer() {
                         }}>
                       Shipping and Delivery
                       </Link>
-                      <Link onClick={() => window.scrollTo(0, 0)} to="/privacy" style={{
+                      <Link onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} to="/privacy" style={{
                          cursor: "pointer",
                           marginTop: "5px",
                           fontFamily: "Roboto, Helvetica, Arial, sans-serif",

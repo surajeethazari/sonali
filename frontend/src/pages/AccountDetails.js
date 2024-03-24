@@ -79,7 +79,7 @@ export default function AccountDetails() {
                     <Typography color={'primary.main'}  variant="h5" component="div" sx={{fontWeight: '400'}}>
                         {Constants.accountDetailsText}
                     </Typography>
-                    <Link to="/" onClick={() => window.scrollTo(0, 0)}>
+                    <Link to="/" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
                         <Typography color={'secondary.main'}  variant="body2" component="div" sx={{fontWeight: '400'}}>
                             {Constants.logOutText}
                         </Typography>
