@@ -29,7 +29,7 @@ export default function Home(props) {
   
   return (
         <Box >
-          <Carousel dotPosition="right" autoplay effect="fade" dots="false">
+          <Carousel dotPosition="bottom" autoplay effect="fade" dots="true">
               <CardMedia
                 component="img"
                 height="400"

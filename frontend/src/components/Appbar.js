@@ -13,6 +13,7 @@ import logo_transparent from '../assets/images/logo_transparent.png'
 import SearchIcon from '@mui/icons-material/Search';
 import Badge from '@mui/material/Badge';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import StarIcon from '@mui/icons-material/Star';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
 import CloseRounded from '@mui/icons-material/CloseRounded';
 import List from '@mui/material/List';
@@ -134,8 +135,16 @@ function DefaultAppBar() {
                   {searchSection()}
                 </SwipeableDrawer>
              </React.Fragment>
-           
-            
+
+             <IconButton
+              onClick={() => navigate('/favourite')}
+              size="large"
+              color="inherit"
+            >
+              <Badge badgeContent={2} color="error" sx={{ "&:hover": { color: "secondary.main" } }}>
+                <StarIcon/>
+              </Badge>
+            </IconButton>
             <IconButton
               onClick={() => navigate('/cart')}
               size="large"
