@@ -21,16 +21,16 @@ import { CardMedia, TextField } from '@mui/material';
 export default function Cart() {
   const navigate = useNavigate();
   const obj = useLocation();
-  const [item, setItem] = React.useState(obj.state.item);
+  const [item, setItem] = React.useState([]);
 
   let crumbs = [{name: "Home", trigger: "/", active: true}, {name: "Cart", trigger: "/cart",  active: false}]
   return (
     <Container maxWidth="xl">
       <BreadCrumbs crumbs={crumbs}/>
-        {item ? 
+        {item && item.length > 0 ? 
           <Box width="100%" display="flex"
             justifyContent="space-between"
-            sx={{ marginTop: "50px", flexDirection: { xs: 'column', md: 'row'}}}>
+            sx={{ marginTop: "50px", marginBottom: "50px", flexDirection: { xs: 'column', md: 'row'}}}>
             <Box flexDirection="column" sx={{width: {xs: '100%', md: '75%'}}}>
               <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 700 }} aria-label="spanning table">
@@ -150,9 +150,6 @@ export default function Cart() {
           <Box
             height={400}
             width={500}
-            my={10}
-            mb={10}
-            mx={-10}
             display="flex"
             alignItems="center"
             justifyContent="center"
@@ -162,7 +159,7 @@ export default function Cart() {
             <Typography variant="h4" color={'primary'}>
             {Constants.shoppingCartText}
             </Typography>
-            <Typography mt={5} variant="body2" color={'primary'}>
+            <Typography mt={2} variant="body2" color={'primary'}>
               {Constants.shoppingCartEmptyText}
             </Typography>
             <Button
@@ -178,7 +175,7 @@ export default function Cart() {
                 {Constants.continueShoppingText}
               </Button>
           </Box>
-          </Container>
+        </Container>
         }
       
     </Container>

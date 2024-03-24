@@ -37,9 +37,8 @@ export default function SignUp() {
         <Box
           height={430}
           width={500}
-          mt={2}
           mb={10}
-          mx={-10}
+          mt={5}
           display="flex"
           alignItems="center"
           justifyContent="center"

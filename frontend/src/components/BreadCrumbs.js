@@ -9,6 +9,7 @@ export default function BreadCrumbs(props) {
         <Breadcrumbs aria-label="breadcrumb" sx={{marginTop: 12}}>
             {props.crumbs.map((breadcrumb, index) => (
                  <Link key={index} to={breadcrumb.active? breadcrumb.trigger:"#"} style={{
+                    cursor: breadcrumb.active ? 'pointer':'default',
                     marginTop: "2px",
                     textDecoration: 'none',
                     letterSpacing: '.rem',

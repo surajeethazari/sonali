@@ -8,11 +8,8 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import logo_white from '../assets/images/logo_white.png'
+import logo_transparent from '../assets/images/logo_transparent.png'
 import SearchIcon from '@mui/icons-material/Search';
 import Badge from '@mui/material/Badge';
 import AccountCircle from '@mui/icons-material/AccountCircle';
@@ -22,9 +19,8 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import { Divider, SwipeableDrawer, TextField } from '@mui/material';
+import { SwipeableDrawer, TextField } from '@mui/material';
 import { useNavigate, NavLink, Link } from "react-router-dom";
-import Search from '@mui/icons-material/Search';
 import { useTheme } from '@mui/material/styles';
 
 const navItems = ['Collection', 'Contact'];
@@ -98,8 +94,9 @@ function DefaultAppBar() {
               flexGrow: 1,
               display: { xs: 'flex', md: 'flex' },
             }}>
-          <Avatar alt="SF" src={logo_white} />
+          <Avatar alt="SF" src={logo_transparent} />
           <Link to="/" style={{
+                marginLeft: "10px",
                 marginTop: "2px",
                 textDecoration: 'none',
                 fontFamily: 'fantasy',

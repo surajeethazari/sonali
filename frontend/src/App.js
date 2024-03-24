@@ -22,6 +22,7 @@ import ProductDetail from './pages/ProductDetail';
 import Checkout from './pages/Checkout';
 import AccountDetails from './pages/AccountDetails';
 import PaymentSuccess from './pages/PaymentSuccess';
+import Privacy from './pages/Privacy';
 
 
 const defaultTheme = createTheme({
@@ -30,8 +31,9 @@ const defaultTheme = createTheme({
         main: '#fff'
       },
       primary: {
-          main: colors.grey[800],
-          light: colors.grey[200]
+          main: colors.grey[600],
+          light: colors.grey[200],
+
       },
       secondary: {
           main: colors.teal[600],
@@ -64,6 +66,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/resetPassword" element={<ForgotPassword />} />
           <Route path="/userdetails" element={<AccountDetails />} />
+          <Route path="/privacy" element={<Privacy />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/products" element={<Products />} />

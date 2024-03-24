@@ -36,9 +36,8 @@ export default function SignIn() {
         <Box
           height={400}
           width={500}
-          my={2}
           mb={10}
-          mx={-10}
+          mt={5}
           display="flex"
           alignItems="center"
           justifyContent="center"

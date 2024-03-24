@@ -22,8 +22,8 @@ export default function Checkout() {
   return (
      <Container maxWidth="xl">
         <BreadCrumbs crumbs={crumbs}/>
-        <Box width={'100%'} justifyContent={'space-between'} display="flex" sx={{marginTop: 5, flexDirection: { xs: 'column', md: 'row'}}}>
-            <Box display="flex" flexDirection={'column'}  sx={{width: {xs: '100%', md: '48%', marginBottom: "100px"}}}>
+          <Box width={'100%'} justifyContent={'space-between'} display="flex" sx={{marginTop: 5, marginBottom: "60px", flexDirection: { xs: 'column', md: 'row'}}}>
+            <Box display="flex" flexDirection={'column'}  sx={{width: {xs: '100%', md: '48%'}}}>
               <Breadcrumbs aria-label="breadcrumb">
               {paymentCrumbs.map((breadcrumb, index) => (
                 <Typography key={index} component={'span'}  variant="body2" color={breadcrumb.active ? 'secondary.main':'primary.main'} sx={{fontWeight: '400', marginTop: "5px"}}>
@@ -135,13 +135,13 @@ export default function Checkout() {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
+                  sx={{ mt: 3, mb: 2, display: {xs: 'none', md: 'block'} }}
                 >
                   {Constants.continueePaymentText}
                 </Button>
             </Box>
-            <Box display="flex" flexDirection={'column'}  sx={{width: {xs: '100%', md: '48%', marginBottom: "100px"}}}>
-              <Box sx={{height: item.height, marginTop: 2, height: '80px' }}> 
+            <Box display="flex" flexDirection={'column'}  sx={{width: {xs: '100%', md: '48%'}, marginBottom: "100px", marginTop: {xs: 1, md: 0}}}>
+              <Box sx={{height: item.height, height: '80px' }}> 
                     <Box display="flex" flexDirection={'row'} justifyContent={'space-between'} >
                         <Box display="flex" flexDirection={'row'} >
                             
@@ -173,7 +173,7 @@ export default function Checkout() {
                     </Box>
                   </Box>
                   <Divider sx={{marginTop: 2}}/>
-                        <Box display="flex" justifyContent={'space-between'} flexDirection={'row'}  sx={{marginTop: 2}}>
+                  <Box display="flex" justifyContent={'space-between'} flexDirection={'row'}  sx={{marginTop: 2}}>
                             <Typography component={'div'} variant="h6" color={'primary.main'} sx={{fontWeight: '400', marginTop: "5px"}}>
                             Sub Total
                             </Typography>
@@ -183,8 +183,8 @@ export default function Checkout() {
                             <Typography component={'div'} variant="h6" color={'primary.main'} sx={{fontWeight: '400', marginTop: "5px"}}>
                             5678 /-
                             </Typography>
-                        </Box>
-                        <Box display="flex" justifyContent={'space-between'} flexDirection={'row'} sx={{marginTop: '10px'}}>
+                  </Box>
+                  <Box display="flex" justifyContent={'space-between'} flexDirection={'row'} sx={{marginTop: '10px'}}>
                           <Typography component={'div'} variant="h6" color={'primary.main'} sx={{fontWeight: '400', marginTop: "5px"}}>
                             Shipping
                             </Typography>
@@ -194,19 +194,32 @@ export default function Checkout() {
                             <Typography component={'div'} variant="h6" color={'primary.main'} sx={{fontWeight: '400', marginTop: "5px"}}>
                             50 /-
                             </Typography>
-                        </Box>
-                        <Divider sx={{marginTop: 2}}/>
-                        <Box display="flex" justifyContent={'space-between'} flexDirection={'row'}>
+                  </Box>
+                  <Divider sx={{marginTop: 2}}/>
+                  <Box display="flex" justifyContent={'space-between'} flexDirection={'row'}>
                           <Typography component={'div'} variant="h6" color={'primary.main'} sx={{fontWeight: 'bold', marginTop: "5px"}}>
                             Total
                             </Typography>
                             <Typography component={'div'} variant="h6" color={'primary.main'} sx={{fontWeight: 'bold', marginTop: "5px"}}>
                              5678 /-
                             </Typography>
-                        </Box>
-                        <Typography component={'div'} variant="body2" color={'primary.main'} sx={{fontWeight: '400', marginTop: "5px"}}>
+                  </Box>
+                  <Typography component={'div'} variant="body2" color={'primary.main'} sx={{fontWeight: '400', marginTop: "5px"}}>
                         (Inclusive of tax $0.00)
-                        </Typography>
+                  </Typography>
+                  <Button
+                  onClick={() =>  navigate('/paymentSuccess', {
+                    state: {
+                      item: item
+                    }
+                  })}
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2, display: {xs: 'block', md: 'none'} }}
+                >
+                  {Constants.continueePaymentText}
+                </Button>
             </Box>
         </Box>
     </Container>
