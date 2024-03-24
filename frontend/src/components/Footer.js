@@ -1,8 +1,7 @@
-import { Typography, Link, Container, Box, Divider, InputBase } from '@mui/material'
+import { Typography, Container, Box, Divider, InputBase } from '@mui/material'
 import WhereToVoteIcon from '@mui/icons-material/WhereToVote';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
-import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -16,7 +15,8 @@ import amazonpay from '../assets/images/amazonpay.png'
 import { useTheme } from '@mui/material/styles';
 import React, { Component } from 'react'
 import {
-  useLocation
+  useLocation,
+  Link
 } from "react-router-dom";
 
 
@@ -111,7 +111,7 @@ export default function Footer() {
                       Information
                       </Typography>
                       <Divider sx={{color: theme.palette.appmain.main, marginTop: 1}}/>
-                      <Link to="" style={{
+                      <Link to="" onClick={() => window.scrollTo(0, 0)} style={{
                          cursor: "pointer",
                           marginTop: "5px",
                           fontFamily: "Roboto, Helvetica, Arial, sans-serif",
@@ -123,7 +123,7 @@ export default function Footer() {
                         }}>
                         About Us
                       </Link>
-                      <Link to="" style={{
+                      <Link to="" onClick={() => window.scrollTo(0, 0)} style={{
                          cursor: "pointer",
                           marginTop: "5px",
                           fontFamily: "Roboto, Helvetica, Arial, sans-serif",
@@ -135,7 +135,7 @@ export default function Footer() {
                         }}>
                       Terms & Conditions
                       </Link>
-                      <Link to="" style={{
+                      <Link to="" onClick={() => window.scrollTo(0, 0)} style={{
                          cursor: "pointer",
                           marginTop: "5px",
                           fontFamily: "Roboto, Helvetica, Arial, sans-serif",
@@ -147,7 +147,7 @@ export default function Footer() {
                         }}>
                       Returns & Exchanges
                       </Link>
-                      <Link to="" style={{
+                      <Link to="" onClick={() => window.scrollTo(0, 0)} style={{
                          cursor: "pointer",
                           marginTop: "5px",
                           fontFamily: "Roboto, Helvetica, Arial, sans-serif",
@@ -159,7 +159,7 @@ export default function Footer() {
                         }}>
                       Shipping and Delivery
                       </Link>
-                      <Link to="/privacy" style={{
+                      <Link onClick={() => window.scrollTo(0, 0)} to="/privacy" style={{
                          cursor: "pointer",
                           marginTop: "5px",
                           fontFamily: "Roboto, Helvetica, Arial, sans-serif",

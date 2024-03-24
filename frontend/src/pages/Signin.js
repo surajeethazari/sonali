@@ -26,7 +26,8 @@ export default function SignIn() {
       email: data.get('email'),
       password: data.get('password'),
     });
-    navigate("/")
+    navigate("/");
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -89,7 +90,7 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link to="/resetPassword" >
+                <Link to="/resetPassword" onClick={() => window.scrollTo(0, 0)}>
                   <Typography variant="body2" color={'secondary'}>
                     Forgot password?
                  </Typography>
@@ -99,7 +100,7 @@ export default function SignIn() {
               <Typography variant="body2" color={'primary'}>
               {"Don't have an account?"}
               
-                 <Link to="/signup">
+                 <Link to="/signup" onClick={() => window.scrollTo(0, 0)}>
                   <Typography component="span" variant="body2" color={'secondary'} mx={1}>
                     Signup
                  </Typography>

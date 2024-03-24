@@ -23,7 +23,8 @@ export default function Home(props) {
       state: {
         item: item
       }
-    })
+    });
+    window.scrollTo(0, 0);
   }
   
   return (

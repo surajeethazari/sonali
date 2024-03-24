@@ -27,7 +27,8 @@ export default function SignUp() {
       email: data.get('email'),
       password: data.get('password'),
     });
-    navigate("/")
+    navigate("/");
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -99,7 +100,7 @@ export default function SignUp() {
           <Typography variant="body2" color={'primary'}>
                  Already have an account?
               
-                 <Link to="/signin">
+                 <Link to="/signin" onClick={() => window.scrollTo(0, 0)}>
                   <Typography component="span" variant="body2" color={'secondary'} mx={1}>
                     Login
                  </Typography>

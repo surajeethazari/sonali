@@ -21,7 +21,7 @@ import { CardMedia, TextField } from '@mui/material';
 export default function Cart() {
   const navigate = useNavigate();
   const obj = useLocation();
-  const [item, setItem] = React.useState([]);
+  const [item, setItem] = React.useState(obj.state.item);
 
   let crumbs = [{name: "Home", trigger: "/", active: true}, {name: "Cart", trigger: "/cart",  active: false}]
   return (
@@ -99,8 +99,8 @@ export default function Cart() {
                     type="submit"
                     variant="contained"
                     sx={{ '&:hover': {
-                      backgroundColor: 'secondary.main',
-                    }, marginTop: 2, padding: 2, marginLeft: 2 }}
+                      backgroundColor: 'primary.main',
+                    }, marginTop: 2, padding: 2, marginLeft: 2,  backgroundColor: 'secondary.main' }}
                   >
                     APPLY
                   </Button>
@@ -138,8 +138,8 @@ export default function Cart() {
                     type="submit"
                     variant="contained"
                     sx={{ '&:hover': {
-                      backgroundColor: 'secondary.main',
-                    }, marginTop: 2 }}
+                      backgroundColor: 'primary.main',
+                    }, marginTop: 2,  backgroundColor: 'secondary.main' }}
                   >
                     CHECKOUT
                   </Button>
@@ -150,6 +150,9 @@ export default function Cart() {
           <Box
             height={400}
             width={500}
+            my={10}
+            mb={10}
+            mx={-10}
             display="flex"
             alignItems="center"
             justifyContent="center"
@@ -159,7 +162,7 @@ export default function Cart() {
             <Typography variant="h4" color={'primary'}>
             {Constants.shoppingCartText}
             </Typography>
-            <Typography mt={2} variant="body2" color={'primary'}>
+            <Typography mt={5} variant="body2" color={'primary'}>
               {Constants.shoppingCartEmptyText}
             </Typography>
             <Button
@@ -169,8 +172,8 @@ export default function Cart() {
                 fullWidth
                 variant="contained"
                 sx={{ '&:hover': {
-                  backgroundColor: 'secondary.main',
-                }, mt: 3, mb: 2 }}
+                  backgroundColor: 'primary.main',
+                }, mt: 3, mb: 2,  backgroundColor: 'secondary.main' }}
               >
                 {Constants.continueShoppingText}
               </Button>

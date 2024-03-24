@@ -101,8 +101,8 @@ export default function ProductDetail(props) {
                     fullWidth
                     variant="contained"
                     sx={{ '&:hover': {
-                      backgroundColor: 'secondary.main',
-                    }, marginTop: 2 }}
+                      backgroundColor: 'primary.main',
+                    }, marginTop: 2, backgroundColor: "secondary.main" }}
                   >
                     {Constants.addToCartText}
                   </Button>
@@ -136,12 +136,12 @@ export default function ProductDetail(props) {
                             fullWidth
                             variant="contained"
                             sx={{ '&:hover': {
-                              backgroundColor: 'secondary.main',
-                            }, mt: 3, mb: 2 }}
+                              backgroundColor: 'primary.main',
+                            }, mt: 3, mb: 2, backgroundColor: 'secondary.main' }}
                           >
                             VIEW CART (1)
                           </Button>
-                          <Link to="/products">
+                          <Link to="/products" onClick={() => window.scrollTo(0, 0)}>
                             <Typography color={'primary.main'}  variant="h6" component="div" sx={{fontWeight: 'bold'}}>
                               {Constants.continueShoppingText}
                             </Typography>

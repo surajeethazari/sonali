@@ -65,7 +65,8 @@ export default function Products() {
       state: {
         item: item
       }
-    })
+    });
+    window.scrollTo(0, 0);
   }
 
   return (

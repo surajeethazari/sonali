@@ -28,7 +28,7 @@ export default function Privacy() {
                 </Typography>
                 <List>
                     {collectionItems.map((item, index) => (
-                    <Box display="flex" flexDirection={'row'} alignItems={'center'}>
+                    <Box key={index} display="flex" flexDirection={'row'} alignItems={'center'}>
                         <CircleIcon sx={{color: 'primary.main', fontSize: '10px', marginTop: 1}}/>
                         <Typography color={'primary.main'}  variant="h6" component="div" sx={{fontWeight: 'normal', marginTop: 1, marginLeft: 1}}>
                         {item}
@@ -72,7 +72,7 @@ export default function Privacy() {
                 </Typography>
                 <List>
                     {infoItems.map((item, index) => (
-                    <Box display="flex" flexDirection={'row'} alignItems={'center'}>
+                    <Box key={index} display="flex" flexDirection={'row'} alignItems={'center'}>
                         <CircleIcon sx={{color: 'primary.main', fontSize: '10px', marginTop: 1}}/>
                         <Typography color={'primary.main'}  variant="h6" component="div" sx={{fontWeight: 'normal', marginTop: 1, marginLeft: 1}}>
                         {item}
@@ -97,7 +97,7 @@ export default function Privacy() {
                 </Typography>
                 <List>
                     {thirdPartItems.map((item, index) => (
-                    <Box display="flex" flexDirection={'row'} alignItems={'center'}>
+                    <Box key={index} display="flex" flexDirection={'row'} alignItems={'center'}>
                         <CircleIcon sx={{color: 'primary.main', fontSize: '10px', marginTop: 1}}/>
                         <Typography color={'primary.main'}  variant="h6" component="div" sx={{fontWeight: 'normal', marginTop: 1, marginLeft: 1}}>
                         {item}

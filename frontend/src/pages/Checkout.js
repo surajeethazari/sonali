@@ -135,7 +135,9 @@ export default function Checkout() {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2, display: {xs: 'none', md: 'block'} }}
+                  sx={{ '&:hover': {
+                    backgroundColor: 'primary.main',
+                  }, mt: 3, mb: 2, display: {xs: 'none', md: 'block'}, backgroundColor: 'secondary.main' }}
                 >
                   {Constants.continueePaymentText}
                 </Button>
@@ -216,7 +218,9 @@ export default function Checkout() {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2, display: {xs: 'block', md: 'none'} }}
+                  sx={{ '&:hover': {
+                    backgroundColor: 'primary.main',
+                  }, mt: 3, mb: 2, display: {xs: 'block', md: 'none'}, backgroundColor: 'secondary.main' }}
                 >
                   {Constants.continueePaymentText}
                 </Button>
