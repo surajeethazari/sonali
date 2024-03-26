@@ -23,9 +23,16 @@ import Checkout from './pages/Checkout';
 import AccountDetails from './pages/AccountDetails';
 import PaymentSuccess from './pages/PaymentSuccess';
 import Privacy from './pages/Privacy';
+import ShippingPolicy from './pages/ShippingPolicy';
+import ReturnPolicy from './pages/ReturnPolicy';
+import TermsAndConditions from './pages/TermsAndConditions';
+import AboutUs from './pages/AboutUs';
 
 
 const defaultTheme = createTheme({
+  typography: {
+    fontFamily: 'monospace',
+  },
   palette: {
       appmain: {
         main: '#fff'
@@ -67,6 +74,10 @@ function App() {
           <Route path="/resetPassword" element={<ForgotPassword />} />
           <Route path="/userdetails" element={<AccountDetails />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/shippingPolicy" element={<ShippingPolicy />} />
+          <Route path="/returnPolicy" element={<ReturnPolicy />} />
+          <Route path="/termsAndConditions" element={<TermsAndConditions />} />
+          <Route path="/about" element={<AboutUs />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/products" element={<Products />} />

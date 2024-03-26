@@ -20,23 +20,32 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import { SwipeableDrawer, TextField } from '@mui/material';
+import Zoom from '@mui/material/Zoom';
+import { styled } from '@mui/material/styles';
+import { tooltipClasses } from '@mui/material/Tooltip';
+import { Button, Divider, Popover, SwipeableDrawer, TextField, Tooltip } from '@mui/material';
 import { useNavigate, NavLink, Link } from "react-router-dom";
 import { useTheme } from '@mui/material/styles';
 
-const navItems = ['Collection', 'Contact'];
+const navItems = ['Kurties'];
 
+const HtmlTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: theme.palette.appmain.main,
+    maxWidth: 600,
+    padding: "20px"
+  },
+}));
 
 
 function DefaultAppBar() {
   const theme = useTheme();
   const navigate = useNavigate();
+  const [hoverElement, setHoverElement] = React.useState(false);
 
-  const [state, setState] = React.useState(false)
-  const handleAcooutClick = () => {
-    navigate('/signin');
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  }
+
 
   const handleNavItemClick = (navItemName) => {
     const navHash = ['products', 'contact']; 
@@ -76,7 +85,7 @@ function DefaultAppBar() {
     setAnchorElNav(null);
   };
 
-
+  const [state, setState] = React.useState(false);
   const toggleDrawer = (open) => (event) => {
     if (
       event &&
@@ -112,15 +121,50 @@ function DefaultAppBar() {
               Sonali Fashion
           </Link>
           </Box>
-          <List sx={{  flexGrow: 0.1, display: { xs: 'none', md: 'flex' } }}>
-            {navItems.map((item) => (
-              <ListItem onClick={() => handleNavItemClick(item)} key={item} >
-                <ListItemButton sx={{ textAlign: 'center' }}>
-                  <ListItemText primary={item} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
+            <HtmlTooltip onClick={() => handleNavItemClick('Kurties')} TransitionComponent={Zoom} title={
+                <React.Fragment >
+                  <Box width={600} display={'flex'} flexDirection={'row'} justifyContent={'space-between'}>
+                    <Box display={'flex'} flexDirection={'column'}>
+                      <Typography color={'primary.dark'}  variant="h6" component="div" sx={{fontWeight: 'bold', marginTop: 2}}>
+                        Shop By Color
+                      </Typography>
+                      <Divider sx={{marginBottom: 2, marginTop: 1}}/>
+                        {["Black", "Blue", "Cream", "Red", "Brown", "Yellow"].map((item) => (
+                        <Typography color={'primary.main'}  component="div" sx={{fontSize: '15px', fontWeight: 'normal', marginTop: "2px", cursor: 'pointer'}}>
+                          {item}
+                        </Typography>
+                        ))}
+                    </Box>
+                    <Box display={'flex'} flexDirection={'column'}>
+                      <Typography color={'primary.dark'}  variant="h6" component="div" sx={{fontWeight: 'bold', marginTop: 2}}>
+                        Shop By Fabric
+                      </Typography>
+                      <Divider sx={{marginBottom: 2, marginTop: 1}}/>
+                        {["Print", "Georgette", "Net", "Cotton", "Silk", "Satin", "Velvet"].map((item) => (
+                          <Typography color={'primary.main'}  component="div" sx={{fontSize: '15px', fontWeight: 'normal', marginTop: "2px", cursor: 'pointer'}}>
+                          {item}
+                        </Typography>
+                        ))}
+                    </Box>
+                    <Box display={'flex'} flexDirection={'column'}>
+                      <Typography color={'primary.dark'}  variant="h6" component="div" sx={{fontWeight: 'bold', marginTop: 2}}>
+                        Shop By Work
+                      </Typography>
+                      <Divider sx={{marginBottom: 2, marginTop: 1}}/>
+                        {["Digital Print", "Zori Work", "Embroidary", "Stone Work", "Brown", "Yellow"].map((item) => (
+                          <Typography color={'primary.main'} component="div" sx={{
+                          fontSize: '15px', fontWeight: 'normal', marginTop: "2px", cursor: 'pointer'}}>
+                          {item}
+                        </Typography>
+                        ))}
+                    </Box>
+                  </Box>
+
+                </React.Fragment>
+              }>
+                <Button>{'Kurties'}</Button>
+              </HtmlTooltip>
+         
           <Box  justifyContent="end" sx={{  flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}>
              <React.Fragment key={'top'}>
                 <IconButton onClick={toggleDrawer(true)} size="large" aria-label="search" color="inherit" sx={{ "&:hover": { color: "secondary.main" } }}>
@@ -150,7 +194,7 @@ function DefaultAppBar() {
               size="large"
               color="inherit"
             >
-              <Badge badgeContent={17} color="error" sx={{ "&:hover": { color: "secondary.main" } }}>
+              <Badge badgeContent={1} color="error" sx={{ "&:hover": { color: "secondary.main" } }}>
                 <ShoppingCart/>
               </Badge>
             </IconButton>

@@ -52,13 +52,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
+    transition: theme.transitions.create('width')
   },
 }));
 
@@ -111,7 +105,7 @@ export default function Footer() {
                       Information
                       </Typography>
                       <Divider sx={{color: theme.palette.appmain.main, marginTop: 1}}/>
-                      <Link to="" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{
+                      <Link to="/about" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{
                          cursor: "pointer",
                           marginTop: "5px",
                           fontFamily: "Roboto, Helvetica, Arial, sans-serif",
@@ -123,7 +117,19 @@ export default function Footer() {
                         }}>
                         About Us
                       </Link>
-                      <Link to="" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{
+                      <Link to="/contact" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{
+                         cursor: "pointer",
+                          marginTop: "5px",
+                          fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+                          textDecoration: 'none',
+                          fontSize: "0.875rem",
+                          letterSpacing: '.rem',
+                          color: theme.palette.appmain.main,
+                          textDecoration: 'none'
+                        }}>
+                        Contact Us
+                      </Link>
+                      <Link to="/termsAndConditions" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{
                          cursor: "pointer",
                           marginTop: "5px",
                           fontFamily: "Roboto, Helvetica, Arial, sans-serif",
@@ -135,7 +141,7 @@ export default function Footer() {
                         }}>
                       Terms & Conditions
                       </Link>
-                      <Link to="" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{
+                      <Link onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} to="/returnPolicy" style={{
                          cursor: "pointer",
                           marginTop: "5px",
                           fontFamily: "Roboto, Helvetica, Arial, sans-serif",
@@ -147,7 +153,7 @@ export default function Footer() {
                         }}>
                       Returns & Exchanges
                       </Link>
-                      <Link to="" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{
+                      <Link onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} to="/shippingPolicy" style={{
                          cursor: "pointer",
                           marginTop: "5px",
                           fontFamily: "Roboto, Helvetica, Arial, sans-serif",

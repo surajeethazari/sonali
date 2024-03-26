@@ -62,8 +62,8 @@ export default function ForgotPassword() {
               fullWidth
               variant="contained"
               sx={{ '&:hover': {
-                backgroundColor: 'secondary.main',
-              }, mt: 3, mb: 2 }}
+                backgroundColor: 'primary.main',
+              }, mt: 3, mb: 2, backgroundColor: 'secondary.main' }}
             >
               Send Link
             </Button>

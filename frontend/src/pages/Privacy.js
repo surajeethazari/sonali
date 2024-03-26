@@ -12,7 +12,7 @@ export default function Privacy() {
     <Container maxWidth="xl">
        <BreadCrumbs crumbs={crumbs}/>
        <Container component="main" maxWidth="xl">
-            <Box display="flex" flexDirection={'column'} m={2} sx={{}}>
+            <Box display="flex" flexDirection={'column'} mt={5} mb={5} sx={{}}>
                 <Typography color={'primary.main'}  variant="h6" component="div" sx={{fontWeight: 'normal'}}>
                 We take your privacy seriously, and we want you to know how we collect, use, share and protect your information.
                 </Typography>
