@@ -1,4 +1,4 @@
-import { Box, Button, CardMedia, Container, Divider, IconButton, Tab, TextField, Typography } from '@mui/material'
+import { Box, Button, CardMedia, Container, ButtonGroup, Drawer, IconButton, Stack, Tab, TextField, Typography } from '@mui/material'
 import React from 'react'
 import BreadCrumbs from '../components/BreadCrumbs'
 import Snackbar from '@mui/material/Snackbar';
@@ -12,6 +12,7 @@ import ArrowForwardTwoTone from '@mui/icons-material/ArrowForwardTwoTone';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import data from '../assets/data/featuredCollection.json'
 
 
 function SlideTransition(props) {
@@ -43,6 +44,12 @@ export default function ProductDetail(props) {
   const handleTabChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const [openDrawer, setOpenDrawer] = React.useState(false);
+
+  const toggleDrawerHandler  = (open) => (event) => {
+    setOpenDrawer(open);
+  }
 
   return (
     <div>
@@ -104,7 +111,7 @@ export default function ProductDetail(props) {
                 />
 
                   <Button
-                    onClick={handleClick}
+                    onClick={toggleDrawerHandler(true)}
                     type="submit"
                     fullWidth
                     variant="contained"
@@ -114,49 +121,113 @@ export default function ProductDetail(props) {
                   >
                     {Constants.addToCartText}
                   </Button>
-                  <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right' }} key="Slide" open={open} onClose={handleClose}>
-                     <Box width={"400px"} display="flex" flexDirection={'column'} alignItems={'center'} justifyContent={"space-between"} sx={{marginTop: -2, zIndex: 999, padding: 3, backgroundColor: 'appmain.main', boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)'}}>
-                        <Box width={"100%"} justifyContent={'space-between'} display="flex" flexDirection={'row'}  sx={{marginTop: 1}}>
-                          <Typography color={'primary.main'}  variant="h6" component="div" sx={{fontWeight: 'bold'}}>
-                            JUST ADDED TO YOUR CART
-                          </Typography>
-                          <IconButton onClick={handleClose} size="large" aria-label="search" color="inherit" sx={{marginTop: -1}}>
-                              <CloseRounded />
-                          </IconButton>
-                        </Box>
-                        <Divider sr={{marginTop: 2}}/>
-                        <Box width={"100%"} justifyContent={'space-between'} display="flex" flexDirection={'row'}  sx={{marginTop: 1}}>
-                           <Typography color={'primary.main'}  variant="h6" component="div" sx={{fontWeight: 'bold'}}>
-                            {item.title}
-                          </Typography>
-                          <Typography color={'primary.main'}  variant="h6" component="div" sx={{fontWeight: 'bold'}}>
-                            Qty: 2
-                          </Typography>
-                        </Box>
-                        <Button
-                          onClick={() =>  navigate('/cart', {
-                            state: {
-                              item: [item]
-                            }
-                          })}
-                          endIcon={<ArrowForwardTwoTone />}
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{ '&:hover': {
-                              backgroundColor: 'primary.main',
-                            }, mt: 3, mb: 2, backgroundColor: 'secondary.main' }}
-                          >
-                            VIEW CART (1)
-                          </Button>
-                          <Link to="/products" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-                            <Typography color={'primary.main'}  variant="h6" component="div" sx={{fontWeight: 'bold'}}>
-                              {Constants.continueShoppingText}
+
+
+                  <Drawer anchor="right" open={openDrawer} onClose={toggleDrawerHandler(false)}>
+                    <Box height={"100%"} sx={{ overflowY: "auto"}}>
+                      <Box height={80} width={"100%"} display="flex" alignItems={'center'} justifyContent={'space-between'} flexDirection={'row'} sx={{position: 'absolute', left: 0, top: 0, zIndex: 999, backgroundColor: 'appmain.main', boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)'}}>
+                            <Typography component={'div'} variant="h5" color={'primary.dark'} sx={{fontWeight: '400', fontWeight: 'bold', marginTop: "5px", marginLeft: "10px"}}>
+                            Shopping Cart
                             </Typography>
-                          </Link>
-                      
+                            <IconButton onClick={toggleDrawerHandler(false)} size="large" aria-label="search" color='primary.dark'>
+                                <CloseRounded />
+                            </IconButton>
+                        </Box>
+                      <Stack direction={"column"} spacing={1} padding={1} sx={{marginBottom: "200px", marginTop: "80px"}}>
+                      {data.map((item, index) => (
+                        <Box key={index} display="flex" flexDirection={'column'} p={2}>
+                          <Box display="flex" flexDirection={'row'} >
+                            <CardMedia onClick={() =>  navigate('/detail/' + item.title, {
+                                  state: {
+                                    item: item
+                                  }
+                                })}
+                                component="img"
+                                height={150}
+                                image={item.img}
+                                alt="Image Title"
+                                sx={{cursor: 'pointer'}}
+                            />
+                              <Box display="flex" width={'300px'}  justifyContent={'space-arround'} flexDirection={'column'} sx={{marginLeft: 3}}>
+                                <Typography onClick={() =>  navigate('/detail/' + item.title, {
+                                  state: {
+                                    item: item
+                                  }
+                                })} variant="h6" color={'primary.main'} component="div" sx={{fontWeight: 'bold', cursor: 'pointer', '&:hover': {
+                                  color: 'secondary.main'
+                                }}}>
+                                {item.title}
+                                </Typography>
+                                <Typography component={'span'}  variant="body2" color={'primary.dark'} sx={{fontWeight: '400', marginTop: "5px"}}>
+                                    Color: Blue, Size: XL
+                                </Typography>
+                                <Typography component={'span'} variant="body2" color={'primary.dark'} sx={{fontWeight: '400', marginTop: "5px"}}>
+                                    {item.Price} /-
+                                </Typography>
+                                <Box display="flex" flexDirection={'row'} alignItems={'center'}>
+                                  <ButtonGroup size="small" aria-label="small outlined button group">
+                                    <Button >+</Button>
+                                    <Button >{2}</Button>
+                                    <Button >-</Button>
+                                  </ButtonGroup>
+                                  <Typography variant="body2" color={'primary.main'} component="div" sx={{ marginLeft: "5px", fontWeight: 'normal', cursor: 'pointer', '&:hover': {
+                                    color: 'secondary.main'
+                                  }}}>
+                                  update
+                                  </Typography>
+                                </Box>
+                              </Box>
+                          </Box>
+                      </Box>
+                  ))}
+                  </Stack>
+                  <Box display="flex" width={'100%'} flexDirection={'column'} sx={{position: 'absolute', left: 0, bottom: 0, zIndex: 999, backgroundColor: 'appmain.main', boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)'}}>
+                        <Box  display="flex" justifyContent={'space-between'} flexDirection={'row'}  sx={{ padding: 2}}>
+                            <Typography component={'div'} variant="h6" color={'primary.main'} sx={{fontWeight: '400', marginTop: "5px"}}>
+                            Sub Total
+                            </Typography>
+                            <Typography component={'div'} variant="h6" color={'primary.main'} sx={{fontWeight: '400', marginTop: "5px"}}>
+                            5678 /-
+                            </Typography>
+                        </Box>
+                        <Box  display="flex" justifyContent={'space-between'} flexDirection={'column'}  sx={{marginTop: 1, padding: 2}}>
+                            <Button
+                              onClick={() =>  {
+                                toggleDrawerHandler(false)
+                                navigate('/cart', {
+                                state: {
+                                  item: data
+                                }
+                              })}}
+                              type="submit"
+                              variant="contained"
+                              sx={{ '&:hover': {
+                                backgroundColor: 'primary.dark',
+                                color: 'appmain.main'
+                              }, backgroundColor: 'primary.light', color: 'primary.dark' }}
+                            >
+                              View Cart
+                          </Button>
+                          <Button
+                              onClick={() =>  {
+                                toggleDrawerHandler(false)
+                                navigate('/checkout', {
+                                state: {
+                                  item: data
+                                }
+                              })}}
+                              type="submit"
+                              variant="contained"
+                              sx={{ '&:hover': {
+                                backgroundColor: 'primary.main',
+                              }, marginTop: 2,  backgroundColor: 'secondary.main'}}
+                            >
+                              CHECKOUT
+                            </Button>
+                        </Box>
+                      </Box>
                     </Box>
-                  </Snackbar>
+                  </Drawer>
               
                   <Box width={'48%'} display="flex" flexDirection={'row'}  sx={{marginTop: 2}}>
                     <Button color='appmain' variant="contained">XXl</Button>

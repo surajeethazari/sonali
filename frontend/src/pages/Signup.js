@@ -1,22 +1,14 @@
 import * as React from 'react';
-import { useEffect, useState } from "react";
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import { useNavigate, Link } from "react-router-dom";
-import BreadCrumbs from '../components/BreadCrumbs';
-
+import { IconButton } from '@mui/material';
+import CloseRounded from '@mui/icons-material/CloseRounded';
 
 
 export default function SignUp() {
-  let crumbs = [{name: "Home", trigger: "/", active: true}, {name: "Sign Up", trigger: "/signup",  active: false}]
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -32,24 +24,26 @@ export default function SignUp() {
   };
 
   return (
-    <Container maxWidth="xl">
-       <BreadCrumbs crumbs={crumbs}/>
-      <Container component="main" maxWidth="xs">
-        <Box
-          height={430}
-          width={500}
-          mb={10}
-          mt={5}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          flexDirection={'column'}
-          p={5}
-          sx={{
-            backgroundColor: 'white',
-            boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
-          }}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+         height: 400,
+         width: 500,
+          bgcolor: 'appmain.main',
+          boxShadow: 24,
+         p: 5,
+         display: "flex",
+         alignItems: "center",
+         justifyContent: "center",
+         flexDirection: 'column'
+       }}
         >
+          <IconButton sx={{position: 'absolute', right: 5, top: 5}} size="large" aria-label="search" color='primary.dark'>
+          <CloseRounded />
+        </IconButton>
           <Typography variant="h5" color={'primary'}>
             Sign up
           </Typography>
@@ -107,7 +101,5 @@ export default function SignUp() {
                 </Link>
                 </Typography>
         </Box>
-      </Container>
-    </Container>
   );
 }

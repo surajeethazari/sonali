@@ -1,20 +1,12 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import BreadCrumbs from '../components/BreadCrumbs';
-
+import { IconButton } from '@mui/material';
+import CloseRounded from '@mui/icons-material/CloseRounded';
 
 export default function ForgotPassword() {
-  let crumbs = [{name: "Home", trigger: "/", active: true}, {name: "Sign In", trigger: "/signin",  active: true}, {name: "Reset", trigger: "/resetPassword",  active: false}]
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -24,24 +16,26 @@ export default function ForgotPassword() {
   };
 
   return (
-    <Container maxWidth="xl">
-       <BreadCrumbs crumbs={crumbs}/>
-      <Container component="main" maxWidth="xs">
         <Box
-          height={200}
-          width={500}
-          mb={10}
-          mt={5}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          flexDirection={'column'}
-          p={5}
-          sx={{
-            backgroundColor: 'white',
-            boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
-          }}
+        sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+         height: 400,
+         width: 500,
+          bgcolor: 'appmain.main',
+          boxShadow: 24,
+         p: 5,
+         display: "flex",
+         alignItems: "center",
+         justifyContent: "center",
+         flexDirection: 'column'
+       }}
         >
+          <IconButton sx={{position: 'absolute', right: 5, top: 5}} size="large" aria-label="search" color='primary.dark'>
+          <CloseRounded />
+        </IconButton>
           <Typography variant="h5" color={'primary'}>
             Password Reset
           </Typography>
@@ -69,7 +63,5 @@ export default function ForgotPassword() {
             </Button>
           </Box>
         </Box>
-      </Container>
-      </Container>
   );
 }

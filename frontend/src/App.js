@@ -9,9 +9,6 @@ import {
 } from "react-router-dom";
 
 import Home from './pages/Home';
-import SignUp from "./pages/Signup";
-import SignIn from './pages/Signin';
-import ForgotPassword from './pages/ForgotPassword';
 import DefaultAppBar from './components/Appbar';
 import ErrorPage from './pages/ErrorPage';
 import Footer from './components/Footer';
@@ -31,7 +28,7 @@ import AboutUs from './pages/AboutUs';
 
 const defaultTheme = createTheme({
   typography: {
-    fontFamily: 'monospace',
+    fontFamily: 'emoji',
   },
   palette: {
       appmain: {
@@ -66,12 +63,8 @@ function App() {
     <ThemeProvider theme={defaultTheme}>
       <Router>
         <DefaultAppBar/>
-        <div style={{marginBottom: '80px'}}/>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/resetPassword" element={<ForgotPassword />} />
           <Route path="/userdetails" element={<AccountDetails />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/shippingPolicy" element={<ShippingPolicy />} />
