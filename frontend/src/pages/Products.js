@@ -118,16 +118,15 @@ export default function Products() {
       <Box
         height={50}
         display="flex"
-        justifyContent="space-between"
         flexDirection={'row'}
         m={2}
-        sx={{}}
+        sx={{ justifyContent: { md: 'space-between', xs: 'end' } }}
       >
         <Typography
           color={'primary.main'}
           variant="h6"
           component="div"
-          sx={{ fontWeight: 'bold' }}
+          sx={{ fontWeight: 'bold', display: { md: 'block', xs: 'none' } }}
         >
           {Constants.shopByText}
         </Typography>
@@ -284,7 +283,7 @@ export default function Products() {
           m={1}
           sx={{ width: { xs: '100%', md: '75%' } }}
         >
-          <Masonry sx={{ marginTop: 1 }} columns={3} spacing={2}>
+          <Masonry sx={{ marginTop: 1 }} columns={{ md: 3, xs: 2 }} spacing={2}>
             {data.map((item, index) => (
               <Paper elevation={8} key={index} sx={{ height: item.height }}>
                 <Card>

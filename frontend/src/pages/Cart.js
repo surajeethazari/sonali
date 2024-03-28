@@ -38,7 +38,15 @@ export default function Cart() {
             flexDirection: 'column',
           }}
         >
-          <TableContainer component={Paper}>
+          <TableContainer
+            component={Paper}
+            sx={{
+              maxHeight: '500px',
+              overflow: 'auto',
+              boxShadow: 4,
+              padding: 2,
+            }}
+          >
             <Table sx={{ minWidth: 700 }} aria-label="spanning table">
               <TableHead>
                 <TableRow>
@@ -280,13 +288,14 @@ export default function Cart() {
                 (Inclusive of tax 0.00 /-)
               </Typography>
               <Button
-                onClick={() =>
+                onClick={() => {
                   navigate('/checkout', {
                     state: {
                       item: item,
                     },
-                  })
-                }
+                  });
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 type="submit"
                 variant="contained"
                 sx={{

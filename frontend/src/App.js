@@ -2,11 +2,9 @@ import * as React from 'react';
 import { colors } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {
-  BrowserRouter as Router, Routes, Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
 import DefaultAppBar from './components/Appbar';
@@ -24,47 +22,46 @@ import ShippingPolicy from './pages/ShippingPolicy';
 import ReturnPolicy from './pages/ReturnPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
 import AboutUs from './pages/AboutUs';
-
+import CreatePassword from './pages/CreatePassword';
 
 const defaultTheme = createTheme({
   typography: {
     fontFamily: 'emoji',
   },
   palette: {
-      appmain: {
-        main: '#fff'
-      },
-      primary: {
-          main: colors.grey[600],
-          light: colors.grey[200],
-
-      },
-      secondary: {
-          main: colors.teal[600],
-          light: colors.teal[200]
-      },
-      tertiary: {
-          main: colors.yellow[300],
-          light: colors.yellow[100]
-      },
-      mode: "light"
-  }
+    appmain: {
+      main: '#fff',
+    },
+    primary: {
+      main: colors.grey[600],
+      light: colors.grey[200],
+    },
+    secondary: {
+      main: colors.teal[600],
+      light: colors.teal[200],
+    },
+    tertiary: {
+      main: '#ff9d0a',
+    },
+    mode: 'light',
+  },
 });
 
 function App() {
   const [message, setMessage] = useState([]);
   useEffect(() => {
-    fetch(process.env.REACT_APP_BE_URI + "/client")
+    fetch(process.env.REACT_APP_BE_URI + '/client')
       .then((res) => res.json())
       .then((data) => setMessage(data));
-  },[]);
+  }, []);
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <Router>
-        <DefaultAppBar/>
+        <DefaultAppBar />
         <Routes>
           <Route index element={<Home />} />
+          <Route path="/createPassword" element={<CreatePassword />} />
           <Route path="/userdetails" element={<AccountDetails />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/shippingPolicy" element={<ShippingPolicy />} />
@@ -79,7 +76,7 @@ function App() {
           <Route path="/paymentSuccess" element={<PaymentSuccess />} />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
     </ThemeProvider>
   );

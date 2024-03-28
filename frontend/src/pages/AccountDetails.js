@@ -222,7 +222,7 @@ export default function AccountDetails() {
               component="div"
               sx={{ fontWeight: '400', marginLeft: 1, marginTop: '10px' }}
             >
-              Surajeet407@gmail.com
+              sonanlifashioninfo@gmail.com
             </Typography>
           </Box>
         </Box>

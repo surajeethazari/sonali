@@ -358,7 +358,8 @@ export default function Privacy() {
             sx={{ fontWeight: 'normal', marginTop: 2 }}
           >
             If you have any questions about our Privacy Policy, we'll do our
-            best to answer them. Please contact us at surajeet407@gmail.com.
+            best to answer them. Please contact us at
+            sonanlifashioninfo@gmail.com.
           </Typography>
         </Box>
       </Container>

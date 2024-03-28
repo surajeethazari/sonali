@@ -24,5 +24,8 @@ let Constants = {
   logOutText: 'Logout',
   //Checkout
   continueePaymentText: 'Continuee Payment',
+  applyBtnText: 'Apply',
+  payWithRazorText: 'Pay With RazorPay',
+  placeOrderText: 'Place Order',
 };
 export default Constants;

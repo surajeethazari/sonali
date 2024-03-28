@@ -17,17 +17,19 @@ import {
   Select,
   InputLabel,
   FormControl,
+  Stack,
 } from '@mui/material';
 import React from 'react';
 import BreadCrumbs from '../components/BreadCrumbs';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Constants from '../utils/Constants';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import CreditScoreIcon from '@mui/icons-material/CreditScore';
+import { useTheme } from '@mui/material/styles';
 
 export default function Checkout() {
-  const [activeStep, setActiveStep] = React.useState(0);
+  const theme = useTheme();
+  const [activeStep, setActiveStep] = React.useState(true);
   const steps = ['Shipping', 'Review & Payments'];
   const navigate = useNavigate();
   const obj = useLocation();
@@ -46,30 +48,155 @@ export default function Checkout() {
     setCountry(event.target.value);
   };
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  const handleNext = (value) => {
+    setActiveStep(value);
   };
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  const handleBack = (value) => {
+    setActiveStep(value);
   };
 
   return (
     <Container maxWidth="xl">
       <BreadCrumbs crumbs={crumbs} />
-      <Stepper activeStep={activeStep} alternativeLabel>
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
+      <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
+        <Box
+          width={'50%'}
+          display={'flex'}
+          flexDirection={'row'}
+          alignItems={'center'}
+        >
+          <Box
+            width="46%"
+            sx={{
+              height: { xs: 4, md: 8 },
+              backgroundColor: activeStep
+                ? theme.palette.tertiary.main
+                : theme.palette.primary.main,
+              borderTopLeftRadius: 20,
+              borderBottomLeftRadius: 20,
+            }}
+          ></Box>
+          <Box
+            onClick={() => handleBack(true)}
+            display={'flex'}
+            flexDirection={'column'}
+            justifyContent={'space-arround'}
+            alignItems={'center'}
+            sx={{
+              width: { md: '6%', xs: '10%' },
+              height: { md: '50px', xs: '30px' },
+              borderWidth: { md: 8, xs: 3 },
+              borderColor: activeStep
+                ? theme.palette.tertiary.main
+                : theme.palette.primary.main,
+              backgroundColor: theme.palette.appmain.main,
+              borderStyle: 'solid',
+              borderRadius: '0% 0% 45% 45%',
+            }}
+          >
+            <LocalShippingIcon
+              sx={{
+                color: activeStep
+                  ? theme.palette.tertiary.main
+                  : theme.palette.primary.main,
+                fontSize: { md: '28px', xs: '12px' },
+                marginTop: 1,
+              }}
+            />
+            <Typography
+              variant="h6"
+              color={'primary'}
+              align="center"
+              sx={{
+                marginTop: { md: 3, xs: 1.5 },
+                fontSize: { xs: '15px', md: '25px' },
+              }}
+            >
+              Shipping
+            </Typography>
+          </Box>
+          <Box
+            width="46%"
+            sx={{
+              height: { xs: 4, md: 8 },
+              backgroundColor: activeStep
+                ? theme.palette.tertiary.main
+                : theme.palette.primary.main,
+            }}
+          ></Box>
+        </Box>
+        <Box
+          width={'50%'}
+          display={'flex'}
+          flexDirection={'row'}
+          alignItems={'center'}
+        >
+          <Box
+            width="46%"
+            sx={{
+              height: { xs: 4, md: 8 },
+              backgroundColor: !activeStep
+                ? theme.palette.tertiary.main
+                : theme.palette.primary.main,
+            }}
+          ></Box>
+          <Box
+            display={'flex'}
+            flexDirection={'column'}
+            justifyContent={'space-arround'}
+            alignItems={'center'}
+            sx={{
+              width: { md: '6%', xs: '10%' },
+              height: { md: '50px', xs: '30px' },
+              borderWidth: { md: 8, xs: 3 },
+              borderColor: !activeStep
+                ? theme.palette.tertiary.main
+                : theme.palette.primary.main,
+              backgroundColor: theme.palette.appmain.main,
+              borderStyle: 'solid',
+              borderRadius: '0% 0% 45% 45%',
+            }}
+          >
+            <CreditScoreIcon
+              sx={{
+                color: !activeStep
+                  ? theme.palette.tertiary.main
+                  : theme.palette.primary.main,
+                fontSize: { md: '28px', xs: '12px' },
+                marginTop: 1,
+              }}
+            />
+            <Typography
+              color={'primary'}
+              align="center"
+              sx={{
+                marginTop: { md: 3, xs: 1.5 },
+                fontSize: { xs: '15px', md: '25px' },
+              }}
+            >
+              Payment
+            </Typography>
+          </Box>
+          <Box
+            width="46%"
+            sx={{
+              height: { xs: 4, md: 8 },
+              backgroundColor: !activeStep
+                ? theme.palette.tertiary.main
+                : theme.palette.primary.main,
+              borderTopRightRadius: 20,
+              borderBottomRightRadius: 20,
+            }}
+          ></Box>
+        </Box>
+      </Box>
       <Box
         width={'100%'}
         justifyContent={'space-between'}
         display="flex"
         sx={{
-          marginTop: 5,
+          marginTop: 10,
           marginBottom: '60px',
           flexDirection: { xs: 'column', md: 'row' },
         }}
@@ -77,20 +204,35 @@ export default function Checkout() {
         <Box
           display="flex"
           flexDirection={'column'}
-          sx={{ width: { xs: '100%', md: '48%' } }}
+          sx={{ width: { xs: '100%', md: '68%' } }}
         >
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ fontWeight: 'bold', marginTop: '10px' }}
-          >
-            Contact: Surajeet407@gmail.com
+          {/* <Typography variant="h5" color={'primary'} sx={{ fontWeight: 'bold' }}>
+            Customer Account
           </Typography>
-          <Typography variant="h4" color={'primary'} sx={{ marginTop: 4 }}>
+          <Box sx={{ padding: 2, boxShadow: 3, marginTop: 2 }}>
+            <Typography variant="h6" color={'primary'} sx={{}}>
+              Email Address
+            </Typography>
+            <TextField
+              color="secondary"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+            />
+          </Box>
+          <Typography variant="h5" color={'primary'} sx={{ marginTop: 4, fontWeight: 'bold' }}>
             Shipping Address
           </Typography>
 
-          <Box component="form" noValidate sx={{ mt: 3 }}>
+          <Box
+            component="form"
+            noValidate
+            sx={{ mt: 3, padding: 2, boxShadow: 2 }}
+          >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -147,36 +289,90 @@ export default function Checkout() {
                 />
               </Grid>
             </Grid>
-          </Box>
-          <Typography variant="h4" color={'primary'} sx={{ marginTop: 4 }}>
-            Shipping Method
+          </Box> */}
+          <Typography
+            variant="h5"
+            color={'primary'}
+            sx={{ fontWeight: 'bold' }}
+          >
+            Apply Discount Code
           </Typography>
-
-          <FormGroup>
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Standard Delivery - 0/-"
-            />
-            <FormControlLabel
-              required
-              control={<Checkbox />}
-              label="Express Delivery - 50/-"
-            />
-          </FormGroup>
-
-          <Typography variant="h4" color={'primary'} sx={{ marginTop: 4 }}>
+          <Box sx={{ padding: 2, boxShadow: 3, marginTop: 2 }}>
+            <Box
+              display={'flex'}
+              flexDirection={'row'}
+              alignItems={'center'}
+              justifyContent={'space-between'}
+            >
+              <Box width={'78%'}>
+                <TextField
+                  color="secondary"
+                  margin="normal"
+                  fullWidth
+                  id="coupon"
+                  label="Enter Coupon Code"
+                  name="coupon"
+                  autoComplete="coupon"
+                />
+              </Box>
+              <Box width={'20%'}>
+                <Button
+                  fullWidth
+                  type="submit"
+                  variant="contained"
+                  sx={{
+                    padding: 1,
+                    mt: 1,
+                    fontSize: '20px',
+                    '&:hover': {
+                      backgroundColor: 'primary.main',
+                    },
+                    display: { xs: 'none', md: 'block' },
+                    backgroundColor: 'secondary.main',
+                  }}
+                >
+                  {Constants.applyBtnText}
+                </Button>
+              </Box>
+            </Box>
+          </Box>
+          <Typography
+            variant="h5"
+            color={'primary'}
+            sx={{ mt: 3, fontWeight: 'bold' }}
+          >
             Payment Method
           </Typography>
-
+          <Box sx={{ padding: 2, boxShadow: 3, marginTop: 2 }}>
+            <FormControlLabel control={<Checkbox />} label="Razor Pay" />
+            <Box
+              width={'100%'}
+              display={'flex'}
+              flexDirection={'row'}
+              alignItems={'end'}
+              sx={{ mt: 1 }}
+            >
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{
+                  '&:hover': {
+                    backgroundColor: 'primary.main',
+                  },
+                  mt: 3,
+                  mb: 2,
+                  display: { xs: 'none', md: 'block' },
+                  backgroundColor: 'secondary.main',
+                }}
+              >
+                {Constants.payWithRazorText}
+              </Button>
+            </Box>
+            <Divider sx={{ marginTop: 2 }} />
+            <FormControlLabel control={<Checkbox />} label="Cash On Delivery" />
+          </Box>
           <Button
-            onClick={() => {
-              handleNext();
-              // navigate('/paymentSuccess', {
-              //   state: {
-              //     item: item
-              //   }
-              // })
-            }}
+            onClick={() => handleNext(false)}
             type="submit"
             variant="contained"
             sx={{
@@ -189,81 +385,77 @@ export default function Checkout() {
               backgroundColor: 'secondary.main',
             }}
           >
-            {Constants.nextBtnText}
+            {Constants.placeOrderText}
           </Button>
         </Box>
         <Box
           display="flex"
           flexDirection={'column'}
           sx={{
-            width: { xs: '100%', md: '48%' },
+            boxShadow: 2,
+            padding: 2,
+            width: { xs: '100%', md: '28%' },
             marginBottom: '100px',
-            marginTop: { xs: 1, md: 0 },
+            marginTop: { xs: 1, md: 7 },
           }}
         >
-          <Box sx={{ height: item.height, height: '80px' }}>
-            <Box
-              display="flex"
-              flexDirection={'row'}
-              justifyContent={'space-between'}
-            >
-              <Box display="flex" flexDirection={'row'}>
-                <Badge
-                  badgeContent={17}
-                  color="error"
-                  sx={{ '&:hover': { color: 'secondary.main' } }}
-                >
+          <Typography
+            variant="h5"
+            color={'primary'}
+            sx={{ fontWeight: 'bold', marginBottom: 1 }}
+          >
+            Order Summary
+          </Typography>
+          <Stack
+            direction={'column'}
+            spacing={1}
+            padding={1}
+            sx={{ maxHeight: '250px', overflow: 'auto' }}
+          >
+            {/* {data.map((item, index) => (
+              <Box key={index} display="flex" flexDirection={'column'}>
+                <Box key={index} display="flex" flexDirection={'row'}>
                   <CardMedia
                     component="img"
                     height={80}
-                    image={item[0].img}
+                    image={item.img}
                     alt="Image Title"
                   />
-                </Badge>
-                <Box
-                  display="flex"
-                  width={'300px'}
-                  justifyContent={'space-arround'}
-                  flexDirection={'column'}
-                  sx={{ marginLeft: 3 }}
-                >
-                  <Typography
-                    variant="body2"
-                    component="div"
-                    sx={{ fontWeight: 'bold' }}
+                  <Box
+                    display="flex"
+                    width={'300px'}
+                    justifyContent={'space-arround'}
+                    flexDirection={'column'}
+                    sx={{ marginLeft: 3 }}
                   >
-                    {item[0].title}
-                  </Typography>
-                  <Typography
-                    component={'span'}
-                    variant="body2"
-                    color={'primary.main'}
-                    sx={{ fontWeight: '400', marginTop: '5px' }}
-                  >
-                    Color: Blue, Size: XL
-                  </Typography>
-                  <Typography
-                    component={'span'}
-                    variant="body2"
-                    color={'primary.main'}
-                    sx={{ fontWeight: '400', marginTop: '5px' }}
-                  >
-                    {item[0].Price} /-
-                  </Typography>
+                    <Typography
+                      variant="body2"
+                      component="div"
+                      sx={{ fontWeight: 'bold' }}
+                    >
+                      {item.title}
+                    </Typography>
+                    <Typography
+                      component={'span'}
+                      variant="body2"
+                      color={'primary.main'}
+                      sx={{ fontWeight: '400', marginTop: '5px' }}
+                    >
+                      Color: Blue, Size: XL
+                    </Typography>
+                    <Typography
+                      component={'span'}
+                      variant="body2"
+                      color={'primary.main'}
+                      sx={{ fontWeight: '400', marginTop: '5px' }}
+                    >
+                      {item.Price} /- (Quantity: 1)
+                    </Typography>
+                  </Box>
                 </Box>
               </Box>
-              <Box display="flex" flexDirection={'column'}>
-                <Typography
-                  component={'div'}
-                  variant="h6"
-                  color={'primary.main'}
-                  sx={{ fontWeight: 'bold', marginTop: '5px' }}
-                >
-                  5678 /-
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
+            ))} */}
+          </Stack>
           <Divider sx={{ marginTop: 2 }} />
           <Box
             display="flex"
@@ -324,7 +516,52 @@ export default function Checkout() {
               color={'primary.main'}
               sx={{ fontWeight: '400', marginTop: '5px' }}
             >
-              50 /-
+              0 /-
+            </Typography>
+          </Box>
+          <Divider sx={{ marginTop: 2 }} />
+          <Box
+            display="flex"
+            justifyContent={'space-between'}
+            flexDirection={'row'}
+          >
+            <Typography
+              component={'div'}
+              variant="h6"
+              color={'primary.main'}
+              sx={{ fontWeight: 'bold', marginTop: '5px' }}
+            >
+              Total Price
+            </Typography>
+            <Typography
+              component={'div'}
+              variant="h6"
+              color={'primary.main'}
+              sx={{ fontWeight: 'bold', marginTop: '5px' }}
+            >
+              5678 /-
+            </Typography>
+          </Box>
+          <Box
+            display="flex"
+            justifyContent={'space-between'}
+            flexDirection={'row'}
+          >
+            <Typography
+              component={'div'}
+              variant="h6"
+              color={'primary.main'}
+              sx={{ fontWeight: 'bold', marginTop: '5px' }}
+            >
+              Discount
+            </Typography>
+            <Typography
+              component={'div'}
+              variant="h6"
+              color={'primary.main'}
+              sx={{ fontWeight: 'bold', marginTop: '5px' }}
+            >
+              500 /-
             </Typography>
           </Box>
           <Divider sx={{ marginTop: 2 }} />
@@ -347,7 +584,7 @@ export default function Checkout() {
               color={'primary.main'}
               sx={{ fontWeight: 'bold', marginTop: '5px' }}
             >
-              5678 /-
+              5178 /-
             </Typography>
           </Box>
           <Typography
@@ -357,6 +594,17 @@ export default function Checkout() {
             sx={{ fontWeight: '400', marginTop: '5px' }}
           >
             (Inclusive of tax $0.00)
+          </Typography>
+          <Typography
+            variant="h5"
+            color={'primary'}
+            sx={{ marginTop: 3, fontWeight: 'bold' }}
+          >
+            Shipping Method
+          </Typography>
+          <Divider sx={{ marginTop: 2 }} />
+          <Typography variant="h6" color={'primary'} sx={{ marginTop: 2 }}>
+            Shipping Cost - Standard
           </Typography>
           <Button
             onClick={() =>

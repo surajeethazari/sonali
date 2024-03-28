@@ -1,0 +1,90 @@
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import {
+  Checkbox,
+  Container,
+  FormControlLabel,
+  IconButton,
+} from '@mui/material';
+
+export default function CreatePassword(props) {
+  let crumbs = [
+    { name: 'Home', trigger: '/', active: true },
+    { name: 'Change Password', trigger: '/createPas', active: false },
+  ];
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+    });
+  };
+
+  return (
+    <Container maxWidth="xl">
+      <Box
+        sx={{
+          bgcolor: 'appmain.main',
+          boxShadow: 2,
+          p: 5,
+          marginTop: '120px',
+          marginBottom: 5,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+        }}
+      >
+        <Typography variant="h4" color={'primary'}>
+          Create a New Password
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+            color="secondary"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+          />
+          <TextField
+            color="secondary"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Confirm Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+          />
+          <FormControlLabel
+            control={<Checkbox value="show" color="primary" />}
+            label="Show Password"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{
+              '&:hover': {
+                backgroundColor: 'primary.main',
+              },
+              mt: 3,
+              mb: 2,
+              backgroundColor: 'secondary.main',
+            }}
+          >
+            Set a New Password
+          </Button>
+        </Box>
+      </Box>
+    </Container>
+  );
+}

@@ -108,7 +108,7 @@ export default function Footer() {
                 variant="body2"
                 color="appmain.main"
               >
-                surajeet407@gmail.com
+                sonanlifashioninfo@gmail.com
               </Typography>
             </Box>
             <Box

@@ -15,7 +15,7 @@ export default function ReturnPolicy() {
     'Refunds will be processed in the form of reward points, which can be used for future purchases. These reward points will have a validity of 1 year from the date of credit.',
     'Please note that reward points will be issued for the product price paid by the customer; shipping charges are non-refundable.',
     'Allow 2-3 business days after the product is received back at our warehouse in Surat for the processing of reward points.',
-    "If you have any questions about our return/refund policies, please don't hesitate to contact us at surajeet407@gmail.com for further assistance.",
+    "If you have any questions about our return/refund policies, please don't hesitate to contact us at sonanlifashioninfo@gmail.com for further assistance.",
     'Please be aware that purchases made or orders placed using store credit/reward points (either in part or in full) are not eligible for return or exchange. Additionally, purchases made or orders placed using store credit/reward points (either in part or in full) are not eligible for any discounts.',
     'For claims regarding receiving the wrong product, a different product, a damaged product, or a defective product, the customer must provide an unboxing video of the received package. The video should cover all sides of the outer packaging and inner items in a single frame, without any cuts or joints. Shipping labels and other details must be clearly visible in the video.',
     'Thank you for choosing Ethnic Plus. We value your satisfaction and strive to provide you with the best shopping experience possible.',

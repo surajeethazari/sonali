@@ -126,7 +126,7 @@ export default function Contact() {
               Phone: +91-8900162177
               <br />
               <br />
-              Mail ID: surajeet407@gmail.com
+              Mail ID: sonanlifashioninfo@gmail.com
               <br />
               <br />
               Monday to Saturday 11:00 AM - 6:00 PM

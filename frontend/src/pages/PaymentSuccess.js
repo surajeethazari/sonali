@@ -1,23 +1,28 @@
 import {
   Badge,
   Box,
+  Button,
   CardMedia,
   Container,
   Divider,
   IconButton,
   Paper,
+  Stack,
   Typography,
 } from '@mui/material';
 import React from 'react';
 import BreadCrumbs from '../components/BreadCrumbs';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import Masonry from '@mui/lab/Masonry';
 import CheckCircleOutlined from '@mui/icons-material/CheckCircleOutlined';
+import data from '../assets/data/featuredCollection.json';
+import ArrowForwardTwoTone from '@mui/icons-material/ArrowForwardTwoTone';
+import Constants from '../utils/Constants';
 
 export default function PaymentSuccess() {
   const navigate = useNavigate();
   const obj = useLocation();
-  const [item, setItem] = React.useState(obj.state.item);
+  const [item, setItem] = React.useState(data);
   console.log(item[0][0]);
   let crumbs = [
     { name: 'Home', trigger: '/', active: false },
@@ -36,7 +41,7 @@ export default function PaymentSuccess() {
         <Box
           display="flex"
           flexDirection={'column'}
-          sx={{ width: { xs: '100%', md: '68%', marginBottom: '100px' } }}
+          sx={{ width: { xs: '100%', md: '68%' } }}
         >
           <Box display="flex" alignItems={'center'} flexDirection={'row'}>
             <IconButton
@@ -92,7 +97,7 @@ export default function PaymentSuccess() {
                 color={'secondary.main'}
                 sx={{ fontWeight: 'bold' }}
               >
-                Email: Surajeet407@gmail.com
+                Email: sonanlifashioninfo@gmail.com
               </Typography>
             </Paper>
             <Paper elevation={8} sx={{ padding: 3, height: 180 }}>
@@ -221,134 +226,70 @@ export default function PaymentSuccess() {
         <Box
           display="flex"
           flexDirection={'column'}
-          sx={{ width: { xs: '100%', md: '48%', marginBottom: '100px' } }}
+          sx={{
+            width: { xs: '100%', md: '28%' },
+            boxShadow: 2,
+            padding: 2,
+            marginTop: { xs: 1, md: 18 },
+          }}
         >
-          <Box sx={{ height: item.height, marginTop: 2, height: '80px' }}>
-            <Box
-              display="flex"
-              flexDirection={'row'}
-              justifyContent={'space-between'}
-            >
-              <Box display="flex" flexDirection={'row'}>
-                <Badge
-                  badgeContent={17}
-                  color="error"
-                  sx={{ '&:hover': { color: 'secondary.main' } }}
-                >
+          <Typography
+            variant="h5"
+            color={'primary'}
+            sx={{ fontWeight: 'bold', marginBottom: 1 }}
+          >
+            Order Summary
+          </Typography>
+          {/* <Stack
+            direction={'column'}
+            spacing={1}
+            padding={1}
+            sx={{ maxHeight: '250px', overflow: 'auto' }}
+          >
+            {data.map((item, index) => (
+              <Box key={index} display="flex" flexDirection={'column'}>
+                <Box key={index} display="flex" flexDirection={'row'}>
                   <CardMedia
                     component="img"
                     height={80}
-                    image={item[0].img}
+                    image={item.img}
                     alt="Image Title"
                   />
-                </Badge>
-                <Box
-                  display="flex"
-                  width={'300px'}
-                  justifyContent={'space-arround'}
-                  flexDirection={'column'}
-                  sx={{ marginLeft: 3 }}
-                >
-                  <Typography
-                    variant="body2"
-                    component="div"
-                    sx={{ fontWeight: 'bold' }}
+                  <Box
+                    display="flex"
+                    width={'300px'}
+                    justifyContent={'space-arround'}
+                    flexDirection={'column'}
+                    sx={{ marginLeft: 3 }}
                   >
-                    {item[0].title}
-                  </Typography>
-                  <Typography
-                    component={'span'}
-                    variant="body2"
-                    color={'primary.main'}
-                    sx={{ fontWeight: '400', marginTop: '5px' }}
-                  >
-                    Color: Blue, Size: XL
-                  </Typography>
-                  <Typography
-                    component={'span'}
-                    variant="body2"
-                    color={'primary.main'}
-                    sx={{ fontWeight: '400', marginTop: '5px' }}
-                  >
-                    {item[0].Price} /-
-                  </Typography>
+                    <Typography
+                      variant="body2"
+                      component="div"
+                      sx={{ fontWeight: 'bold' }}
+                    >
+                      {item.title}
+                    </Typography>
+                    <Typography
+                      component={'span'}
+                      variant="body2"
+                      color={'primary.main'}
+                      sx={{ fontWeight: '400', marginTop: '5px' }}
+                    >
+                      Color: Blue, Size: XL
+                    </Typography>
+                    <Typography
+                      component={'span'}
+                      variant="body2"
+                      color={'primary.main'}
+                      sx={{ fontWeight: '400', marginTop: '5px' }}
+                    >
+                      {item.Price} /- (Quantity: 1)
+                    </Typography>
+                  </Box>
                 </Box>
               </Box>
-              <Box display="flex" flexDirection={'column'}>
-                <Typography
-                  component={'div'}
-                  variant="h6"
-                  color={'primary.main'}
-                  sx={{ fontWeight: 'bold', marginTop: '5px' }}
-                >
-                  5678 /-
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
-          <Divider sx={{ marginTop: 2 }} />
-          <Box
-            display="flex"
-            justifyContent={'space-between'}
-            flexDirection={'row'}
-            sx={{ marginTop: 2 }}
-          >
-            <Typography
-              component={'div'}
-              variant="h6"
-              color={'primary.main'}
-              sx={{ fontWeight: '400', marginTop: '5px' }}
-            >
-              Sub Total
-            </Typography>
-            <Typography
-              component={'div'}
-              variant="h6"
-              color={'primary.main'}
-              sx={{ fontWeight: '400', marginTop: '5px' }}
-            >
-              1 Item
-            </Typography>
-            <Typography
-              component={'div'}
-              variant="h6"
-              color={'primary.main'}
-              sx={{ fontWeight: '400', marginTop: '5px' }}
-            >
-              5678 /-
-            </Typography>
-          </Box>
-          <Box
-            display="flex"
-            justifyContent={'space-between'}
-            flexDirection={'row'}
-            sx={{ marginTop: '10px' }}
-          >
-            <Typography
-              component={'div'}
-              variant="h6"
-              color={'primary.main'}
-              sx={{ fontWeight: '400', marginTop: '5px' }}
-            >
-              Shipping
-            </Typography>
-            <Typography
-              component={'div'}
-              variant="h6"
-              color={'primary.main'}
-              sx={{ fontWeight: '400', marginTop: '5px' }}
-            >
-              Standard Delivery
-            </Typography>
-            <Typography
-              component={'div'}
-              variant="h6"
-              color={'primary.main'}
-              sx={{ fontWeight: '400', marginTop: '5px' }}
-            >
-              50 /-
-            </Typography>
-          </Box>
+            ))}
+          </Stack> */}
           <Divider sx={{ marginTop: 2 }} />
           <Box
             display="flex"
@@ -381,6 +322,36 @@ export default function PaymentSuccess() {
             (Inclusive of tax $0.00)
           </Typography>
         </Box>
+      </Box>
+      <Box
+        display={'flex'}
+        flexDirection={'row'}
+        alignItems={'center'}
+        justifyContent={'center'}
+        sx={{ marginBottom: '20px', marginTop: '20px' }}
+      >
+        <Link
+          to="/products"
+          state={data}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <Button
+            fullWidth
+            endIcon={<ArrowForwardTwoTone />}
+            type="submit"
+            variant="contained"
+            sx={{
+              '&:hover': {
+                backgroundColor: 'primary.dark',
+                color: 'appmain.main',
+              },
+              backgroundColor: 'secondary.dark',
+              color: 'appmain.main',
+            }}
+          >
+            {Constants.continueShoppingText}
+          </Button>
+        </Link>
       </Box>
     </Container>
   );
