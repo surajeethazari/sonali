@@ -1,27 +1,28 @@
 let Constants = {
-    signInText: "Sign In",
-    signUpText: "Sign Up",
-    featuredProductText: "Featured Products",
-    //Shoppping Cart
-    shoppingCartText: "Shopping Cart",
-    shoppingCartEmptyText: "your cart is empty!",
-    continueShoppingText: "Continue Shopping",
-    //Product Details 
-    productHeaderText: "Collection",
-    shopByText: "Shop By",
-    sortByText: "Sort By",
-    priceText: "Price",
-    colorText: "Color",
-    sizeText: "Size",
-    brandText: "Brand",
-    addToCartText: "Add To Cart",
-    // Account Details
-    myAccountText: "My Account",
-    accountDetailsText: "Account Details",
-    orderHistoryText: "Order History",
-    noOrderFoundText: "You have not placed any orders yet",
-    logOutText: "Logout",
-    //Checkout
-    continueePaymentText: "Continuee Payment"
-}
+  signInText: 'Sign In',
+  signUpText: 'Sign Up',
+  featuredProductText: 'Featured Products',
+  //Shoppping Cart
+  shoppingCartText: 'Shopping Cart',
+  shoppingCartEmptyText: 'your cart is empty!',
+  continueShoppingText: 'Continue Shopping',
+  nextBtnText: 'Next',
+  //Product Details
+  productHeaderText: 'Collection',
+  shopByText: 'Shop By',
+  sortByText: 'Sort By',
+  priceText: 'Price',
+  colorText: 'Color',
+  sizeText: 'Size',
+  brandText: 'Brand',
+  addToCartText: 'Add To Cart',
+  // Account Details
+  myAccountText: 'My Account',
+  accountDetailsText: 'Account Details',
+  orderHistoryText: 'Order History',
+  noOrderFoundText: 'You have not placed any orders yet',
+  logOutText: 'Logout',
+  //Checkout
+  continueePaymentText: 'Continuee Payment',
+};
 export default Constants;
